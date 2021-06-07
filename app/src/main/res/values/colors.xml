@@ -11,4 +11,5 @@
     <!-- CUSTOM COLOURS -->
     <color name="background">#CBCBB5</color>
     <color name="light_green">#EBF696</color>
+    <color name="darker_green">#DBEA8D</color>
 </resources>
