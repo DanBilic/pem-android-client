@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">PemApp</string>
+    <string name="app_name">DRAG</string>
+    <string name="dr">DR</string>
+    <string name="ag">AG</string>
+    <string name="login">Login</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="password_again">Enter Password again</string>
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
+    <string name="discover">Discover</string>
+    <string name="details">Details</string>
+    <string name="moments">Moments</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="name">Name</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_e_mail">Your E-Mail</string>
 </resources>

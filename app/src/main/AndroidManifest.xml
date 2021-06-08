@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PemApp">
-        <activity android:name=".MainActivity">
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".moments.MomentsActivity" />
+        <activity android:name=".discover.DiscoverActivity" />
+        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,11 +1,12 @@
-package com.example.pemapp
+package com.example.pemapp.moments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.pemapp.R
 
-class MainActivity : AppCompatActivity() {
+class MomentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_moments)
     }
 }
