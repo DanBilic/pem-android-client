@@ -1,4 +1,4 @@
-package com.example.pemapp.fragments.registration
+package com.example.pemapp.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

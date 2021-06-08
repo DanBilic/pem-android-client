@@ -1,4 +1,4 @@
-package com.example.pemapp.fragments.moments
+package com.example.pemapp.moments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

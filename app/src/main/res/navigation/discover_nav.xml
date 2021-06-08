@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/discover_nav"
+    app:startDestination="@id/discoverFragment">
+
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.example.pemapp.discover.discoverFragment"
+        android:label="fragment_discover"
+        tools:layout="@layout/fragment_discover" >
+        <action
+            android:id="@+id/action_discoverFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.pemapp.discover.detailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
+    </fragment>
+
+</navigation>

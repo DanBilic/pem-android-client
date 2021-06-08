@@ -1,4 +1,4 @@
-package com.example.pemapp.fragments.login
+package com.example.pemapp.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,12 +23,12 @@ class loginFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
-        view.login_button.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_discoverFragment)
-        }
-
         view.enter_registration_button.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+
+        view.login_button.setOnClickListener {
+            findNavController().navigate(R.id.discover_nav)
         }
 
         return view
