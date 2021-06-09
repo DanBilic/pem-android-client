@@ -9,6 +9,11 @@
         android:id="@+id/momentsFragment"
         android:name="com.example.pemapp.moments.momentsFragment"
         android:label="fragment_moments"
-        tools:layout="@layout/fragment_moments" />
+        tools:layout="@layout/fragment_moments" >
+        <action
+            android:id="@+id/action_momentsFragment_to_discover_nav"
+            app:destination="@id/discover_nav" />
+    </fragment>
+    <include app:graph="@navigation/discover_nav" />
 
 </navigation>

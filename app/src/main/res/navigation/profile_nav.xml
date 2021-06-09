@@ -9,6 +9,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.pemapp.profile.profileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_discover_nav"
+            app:destination="@id/discover_nav" />
+    </fragment>
+    <include app:graph="@navigation/discover_nav" />
 
 </navigation>
