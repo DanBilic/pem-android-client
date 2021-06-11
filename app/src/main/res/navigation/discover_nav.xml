@@ -13,15 +13,6 @@
         <action
             android:id="@+id/action_discoverFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_discoverFragment_to_login_nav"
-            app:destination="@id/login_nav" />
-        <action
-            android:id="@+id/action_discoverFragment_to_moments_nav"
-            app:destination="@id/moments_nav" />
-        <action
-            android:id="@+id/action_discoverFragment_to_profile_nav"
-            app:destination="@id/profile_nav" />
     </fragment>
 
     <fragment
@@ -33,8 +24,5 @@
             android:id="@+id/action_detailFragment_to_discoverFragment"
             app:destination="@id/discoverFragment" />
     </fragment>
-    <include app:graph="@navigation/login_nav" />
-    <include app:graph="@navigation/moments_nav" />
-    <include app:graph="@navigation/profile_nav" />
 
 </navigation>
