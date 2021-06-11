@@ -15,4 +15,8 @@
     <string name="name">Name</string>
     <string name="your_name">Your Name</string>
     <string name="your_e_mail">Your E-Mail</string>
+    <string name="title">Title</string>
+    <string name="here_will_be_the_description">Here will be the description.</string>
+    <string name="social_event">Social Event</string>
+    <string name="profile">Profile</string>
 </resources>

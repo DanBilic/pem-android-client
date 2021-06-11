@@ -28,7 +28,7 @@ class loginFragment : Fragment() {
         }
 
         view.login_button.setOnClickListener {
-            findNavController().navigate(R.id.discover_nav)
+            findNavController().navigate(R.id.discover_nav_graph)
         }
 
         return view
