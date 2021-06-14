@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android.extensions'
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.pemapp"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -23,13 +24,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    /* FOR JETPACK COMPOSE
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        useIR = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.0-beta07'
+    }
+    buildFeatures {
+        compose true
+    }
+    */
 }
 
 dependencies {
@@ -39,7 +49,36 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Dependency for CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    /* FOR JETPACK COMPOSE
+    implementation 'androidx.compose.ui:ui:1.0.0-beta07'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.0.0-beta07'
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation 'androidx.compose.foundation:foundation:1.0.0-beta07'
+    // Material Design
+    implementation 'androidx.compose.material:material:1.0.0-beta07'
+    // Material design icons
+    implementation 'androidx.compose.material:material-icons-core:1.0.0-beta07'
+    implementation 'androidx.compose.material:material-icons-extended:1.0.0-beta07'
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.3.0-alpha08'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha05'
+    // Integration with observables
+    implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-beta07'
+    implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.0-beta07'
+
+    // UI Tests
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.0-beta07'
+    */
 }
