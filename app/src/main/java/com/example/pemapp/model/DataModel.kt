@@ -3,7 +3,7 @@ package com.example.pemapp.model
 import com.google.gson.annotations.SerializedName
 
 
-data class Post (
+data class DataModel (
     @SerializedName("userId")
     val _id: String,
     val name: String,
