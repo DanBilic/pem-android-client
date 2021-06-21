@@ -1,7 +1,6 @@
-package com.example.pemapp.api
+package com.example.pemapp.data.api
 
-import com.example.pemapp.model.DataModel
-import retrofit2.Response
+import com.example.pemapp.data.model.DataModel
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

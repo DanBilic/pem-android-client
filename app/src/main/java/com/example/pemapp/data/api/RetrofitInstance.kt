@@ -1,6 +1,5 @@
-package com.example.pemapp.api
+package com.example.pemapp.data.api
 
-import com.example.pemapp.util.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

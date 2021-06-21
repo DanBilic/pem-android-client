@@ -1,20 +1,18 @@
-package com.example.pemapp
+package com.example.pemapp.data
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pemapp.model.DataModel
-import com.example.pemapp.repository.Repository
-import kotlinx.coroutines.flow.callbackFlow
+import com.example.pemapp.data.model.DataModel
+import com.example.pemapp.data.repository.Repository
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
     val readResponse: MutableLiveData<List<DataModel>> = MutableLiveData()
     val writeResponse: MutableLiveData<DataModel> = MutableLiveData()
 
-    fun pushWrite(post:DataModel){
+    fun pushWrite(post: DataModel){
         viewModelScope.launch {
             writeResponse.value  = repository.pushWrite(post)
         }

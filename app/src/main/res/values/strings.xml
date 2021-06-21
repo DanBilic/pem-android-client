@@ -19,4 +19,23 @@
     <string name="here_will_be_the_description">Here will be the description.</string>
     <string name="social_event">Social Event</string>
     <string name="profile">Profile</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding">Onboarding</string>
+    <string name="onboarding1">1/3</string>
+    <string name="onboarding2">2/3</string>
+    <string name="onboarding3">3/3</string>
+    <string name="location">location</string>
+    <string name="locationQuestion">Where is your home location?</string>
+    <string name="nameQuestion">What should your user name be?</string>
+    <string name="uploadAPhoto">Upload a photo.</string>
+    <string name="eventQuestion">What do you want to do in your leisure time?</string>
+    <string name="next">next</string>
+    <string name="party">Party</string>
+    <string name="sport">Sport</string>
+    <string name="food">Food</string>
+    <string name="books">Books</string>
+    <string name="movies">Movies</string>
+    <string name="culture">Culture</string>
+    <string name="arts">Arts</string>
 </resources>

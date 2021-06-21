@@ -1,15 +1,14 @@
-package com.example.pemapp.login
+package com.example.pemapp.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.pemapp.MainViewModel
-import com.example.pemapp.MainViewModelFactory
+import com.example.pemapp.data.MainViewModel
+import com.example.pemapp.data.MainViewModelFactory
 import com.example.pemapp.R
-import com.example.pemapp.model.DataModel
-import com.example.pemapp.repository.Repository
+import com.example.pemapp.data.model.DataModel
+import com.example.pemapp.data.repository.Repository
 
 class LoginActivity : AppCompatActivity() {
 

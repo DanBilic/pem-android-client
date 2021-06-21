@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.pemapp.login.loginFragment"
+        android:name="com.example.pemapp.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -20,7 +20,7 @@
 
     <fragment
     android:id="@+id/registrationFragment"
-    android:name="com.example.pemapp.login.registrationFragment"
+    android:name="com.example.pemapp.ui.login.registrationFragment"
     android:label="fragment_registration"
     tools:layout="@layout/fragment_registration" >
     <action

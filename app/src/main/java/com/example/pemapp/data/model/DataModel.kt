@@ -1,4 +1,4 @@
-package com.example.pemapp.model
+package com.example.pemapp.data.model
 
 import com.google.gson.annotations.SerializedName
 

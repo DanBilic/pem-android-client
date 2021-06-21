@@ -1,4 +1,4 @@
-package com.example.pemapp.moments
+package com.example.pemapp.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.pemapp.R
 import kotlinx.android.synthetic.main.fragment_discover.view.*
 
-class momentsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,8 +19,9 @@ class momentsFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_moments, container, false)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         return view
     }
+
 }

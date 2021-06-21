@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.example.pemapp.discover.discoverFragment"
+        android:name="com.example.pemapp.ui.discover.discoverFragment"
         android:label="fragment_discover"
         tools:layout="@layout/fragment_discover" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.pemapp.discover.detailFragment"
+        android:name="com.example.pemapp.ui.discover.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
