@@ -1,6 +1,7 @@
 package com.example.pemapp.data.api
 
 import com.example.pemapp.data.model.DataModel
+import com.example.pemapp.data.model.MomentModel
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -21,4 +22,13 @@ interface SimpleApi {
     suspend fun pushWrite(
         @Body post: DataModel
     ): DataModel
+
+    @GET("moments")
+    suspend fun getMoments(): List<MomentModel>
+
+    @POST("moment")
+    suspend fun postMoment(
+        @Body post: MomentModel
+    ): MomentModel
+
 }

@@ -20,6 +20,11 @@
             app:title="@string/moments"
             app:titleTextColor="@color/black" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/moments_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
