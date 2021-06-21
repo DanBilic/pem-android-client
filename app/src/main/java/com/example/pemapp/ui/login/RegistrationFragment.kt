@@ -17,6 +17,7 @@ import com.example.pemapp.data.MainViewModelFactory
 import com.example.pemapp.data.RegisterViewModel
 import com.example.pemapp.data.model.DataModel
 import com.example.pemapp.data.repository.Repository
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_registration.view.*
 
 
@@ -48,7 +49,7 @@ class RegistrationFragment : Fragment() {
         view.registerButton.setOnClickListener {
             val myWrite = DataModel("","goodusername", regiEmail.toString(), regiPassword.toString(), "neutral")
             viewModel.pushWrite(myWrite)
-            Toast.makeText(requireContext(), "successfully registered", Toast.LENGTH_SHORT).show()
+            Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 
             findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
         }

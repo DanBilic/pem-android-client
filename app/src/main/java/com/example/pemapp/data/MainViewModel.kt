@@ -26,7 +26,12 @@ class MainViewModel(private val repository: Repository): ViewModel() {
 
     fun authRead(email:String, password:String){
         viewModelScope.launch {
-            authResponse.value  = repository.authRead(email, password)
+            try {
+                authResponse.value  = repository.authRead(email, password)
+            } catch (e: retrofit2.HttpException) {
+                authResponse.value = DataModel("", "wrong password", "", "", "")
+                println(e)
+            }
         }
     }
 }
