@@ -8,6 +8,10 @@ class Repository {
         return RetrofitInstance.api.makeRead()
     }
 
+    suspend fun authRead(email:String, password:String): DataModel {
+        return RetrofitInstance.api.authRead(email, password)
+    }
+
     suspend fun pushWrite(post: DataModel): DataModel {
         return RetrofitInstance.api.pushWrite(post)
     }

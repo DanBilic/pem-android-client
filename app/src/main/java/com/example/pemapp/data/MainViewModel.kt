@@ -11,6 +11,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
 
     val readResponse: MutableLiveData<List<DataModel>> = MutableLiveData()
     val writeResponse: MutableLiveData<DataModel> = MutableLiveData()
+    val authResponse: MutableLiveData<DataModel> = MutableLiveData()
 
     fun pushWrite(post: DataModel){
         viewModelScope.launch {
@@ -20,6 +21,12 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     fun makeRead(){
         viewModelScope.launch {
             readResponse.value  = repository.makeRead()
+        }
+    }
+
+    fun authRead(email:String, password:String){
+        viewModelScope.launch {
+            authResponse.value  = repository.authRead(email, password)
         }
     }
 }
