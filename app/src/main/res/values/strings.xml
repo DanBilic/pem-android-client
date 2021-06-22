@@ -21,6 +21,7 @@
     <string name="here_will_be_the_description">Here will be the description.</string>
     <string name="social_event">Social Event</string>
     <string name="profile">Profile</string>
+    <string name="appUsage">App Usage</string>
 
     <!-- Onboarding -->
     <string name="onboarding">Onboarding</string>

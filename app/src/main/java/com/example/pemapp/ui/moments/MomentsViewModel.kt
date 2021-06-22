@@ -1,4 +1,4 @@
-package com.example.pemapp.data
+package com.example.pemapp.ui.moments
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

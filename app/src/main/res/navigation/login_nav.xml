@@ -15,7 +15,7 @@
             app:destination="@id/registrationFragment" />
         <action
             android:id="@+id/action_loginFragment_to_discover_nav"
-            app:destination="@id/discover_nav_graph" />
+            app:destination="@id/dashboard_nav_graph" />
     </fragment>
 
     <fragment
@@ -28,9 +28,9 @@
         app:destination="@id/loginFragment" />
     </fragment>
 
-    <navigation android:id="@+id/discover_nav_graph"
+    <navigation android:id="@+id/dashboard_nav_graph"
         app:startDestination="@id/discover_nav">
-        <include app:graph="@navigation/discover_nav" />
+        <include app:graph="@navigation/dashboard_nav" />
         <action
             android:id="@+id/action_global_loginFragment2"
             app:destination="@id/loginFragment" />

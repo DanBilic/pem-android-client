@@ -15,9 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".ui.onboarding.OnboardingActivity"></activity>
-        <activity android:name=".ui.profile.ProfileActivity" />
-        <activity android:name=".ui.moments.MomentsActivity" />
-        <activity android:name=".ui.discover.DiscoverActivity" />
+        <activity android:name=".ui.discover.DashboardActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

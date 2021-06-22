@@ -8,23 +8,20 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.data.MomentsViewModel
 import com.example.pemapp.data.MainViewModel
 import com.example.pemapp.data.MainViewModelFactory
 import com.example.pemapp.data.repository.Repository
-import com.example.pemapp.ui.discover.DiscoverActivity
 import com.google.android.material.snackbar.Snackbar
+import com.example.pemapp.ui.discover.DashboardActivity
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,27 +37,29 @@ class LoginFragment : Fragment() {
         val loginPassword = view.findViewById<EditText>(R.id.login_password).text
 
 
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+//        val repository = Repository()
+//        val viewModelFactory = MainViewModelFactory(repository)
+//        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         view.enterRegistrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 
         view.loginButton.setOnClickListener {
+            val intent = Intent(getActivity(), DashboardActivity::class.java)
+            startActivity(intent)
 
-            viewModel.authRead(loginEmail.toString(), loginPassword.toString())
-            viewModel.authResponse.observe(viewLifecycleOwner, { response ->
-
-                if (response.name == "success") {
-                    val intent = Intent(getActivity(), DiscoverActivity::class.java)
-                    startActivity(intent)
-                } else
-                {
-                    Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
-                }
-            })
+//            viewModel.authRead(loginEmail.toString(), loginPassword.toString())
+//            viewModel.authResponse.observe(viewLifecycleOwner, { response ->
+//
+//                if (response.name == "success") {
+//                    val intent = Intent(getActivity(), DashboardActivity::class.java)
+//                    startActivity(intent)
+//                } else
+//                {
+//                    Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
+//                }
+//            })
 
         }
         return view

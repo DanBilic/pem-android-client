@@ -10,7 +10,7 @@ import com.example.pemapp.R
 import kotlinx.android.synthetic.main.fragment_discover.view.*
 
 
-class discoverFragment : Fragment() {
+class DiscoverFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
