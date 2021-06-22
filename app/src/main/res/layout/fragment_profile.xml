@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profilepicture"
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:layout_marginTop="20dp"

@@ -5,12 +5,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.pemapp.data.MainViewModel
 import com.example.pemapp.R
-import com.example.pemapp.data.RegisterViewModel
+import com.example.pemapp.data.MomentsViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
-    private val registerModel: RegisterViewModel by viewModels()
     private lateinit var email: String
     private lateinit var password: String
 

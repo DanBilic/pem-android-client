@@ -9,9 +9,6 @@ import retrofit2.http.Query
 
 interface SimpleApi {
 
-    @GET("users")
-    suspend fun makeRead(): List<DataModel>
-
     @GET("auth_user")
     suspend fun authRead(
         @Query("email") email:String,

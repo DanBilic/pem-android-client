@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
 import com.example.pemapp.data.MainViewModel
 import com.example.pemapp.data.MainViewModelFactory
-import com.example.pemapp.data.RegisterViewModel
+import com.example.pemapp.data.MomentsViewModel
 import com.example.pemapp.data.model.DataModel
 import com.example.pemapp.data.repository.Repository
 import com.google.android.material.snackbar.Snackbar
@@ -23,7 +22,6 @@ import kotlinx.android.synthetic.main.fragment_registration.view.*
 
 class RegistrationFragment : Fragment() {
 
-    private val registerModel: RegisterViewModel by viewModels()
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
@@ -47,7 +45,7 @@ class RegistrationFragment : Fragment() {
 
 
         view.registerButton.setOnClickListener {
-            val myWrite = DataModel("","goodusername", regiEmail.toString(), regiPassword.toString(), "neutral")
+            val myWrite = DataModel("","Lori, Susan", regiEmail.toString(), regiPassword.toString(), "neutral")
             viewModel.pushWrite(myWrite)
             Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 

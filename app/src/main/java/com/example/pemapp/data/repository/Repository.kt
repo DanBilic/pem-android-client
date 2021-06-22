@@ -5,9 +5,6 @@ import com.example.pemapp.data.model.DataModel
 import com.example.pemapp.data.model.MomentModel
 
 class Repository {
-    suspend fun makeRead(): List<DataModel> {
-        return RetrofitInstance.api.makeRead()
-    }
 
     suspend fun authRead(email:String, password:String): DataModel {
         return RetrofitInstance.api.authRead(email, password)

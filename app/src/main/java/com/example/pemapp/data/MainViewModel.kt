@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
-    val readResponse: MutableLiveData<List<DataModel>> = MutableLiveData()
     val writeResponse: MutableLiveData<DataModel> = MutableLiveData()
     val authResponse: MutableLiveData<DataModel> = MutableLiveData()
 
@@ -20,11 +19,6 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     fun pushWrite(post: DataModel){
         viewModelScope.launch {
             writeResponse.value  = repository.pushWrite(post)
-        }
-    }
-    fun makeRead(){
-        viewModelScope.launch {
-            readResponse.value  = repository.makeRead()
         }
     }
 
