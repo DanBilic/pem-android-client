@@ -37,29 +37,26 @@ class LoginFragment : Fragment() {
         val loginPassword = view.findViewById<EditText>(R.id.login_password).text
 
 
-//        val repository = Repository()
-//        val viewModelFactory = MainViewModelFactory(repository)
-//        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         view.enterRegistrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 
         view.loginButton.setOnClickListener {
-            val intent = Intent(getActivity(), DashboardActivity::class.java)
-            startActivity(intent)
+            viewModel.authRead(loginEmail.toString(), loginPassword.toString())
+            viewModel.authResponse.observe(viewLifecycleOwner, { response ->
 
-//            viewModel.authRead(loginEmail.toString(), loginPassword.toString())
-//            viewModel.authResponse.observe(viewLifecycleOwner, { response ->
-//
-//                if (response.name == "success") {
-//                    val intent = Intent(getActivity(), DashboardActivity::class.java)
-//                    startActivity(intent)
-//                } else
-//                {
-//                    Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
-//                }
-//            })
+                if (response.name == "success") {
+                    val intent = Intent(getActivity(), DashboardActivity::class.java)
+                    startActivity(intent)
+                } else
+                {
+                    Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
+                }
+            })
 
         }
         return view
