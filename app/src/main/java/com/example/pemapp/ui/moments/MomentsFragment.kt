@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
 import com.example.pemapp.data.MainViewModel
 import com.example.pemapp.data.MainViewModelFactory
-import com.example.pemapp.data.MomentsViewModel
-import com.example.pemapp.data.model.MomentModel
 import com.example.pemapp.data.repository.Repository
-import kotlinx.android.synthetic.main.fragment_discover.view.*
 
 class MomentsFragment : Fragment() {
 

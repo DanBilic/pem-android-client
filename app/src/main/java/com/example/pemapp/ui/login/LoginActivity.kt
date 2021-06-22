@@ -2,10 +2,8 @@ package com.example.pemapp.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.example.pemapp.data.MainViewModel
 import com.example.pemapp.R
-import com.example.pemapp.data.MomentsViewModel
 
 class LoginActivity : AppCompatActivity() {
 

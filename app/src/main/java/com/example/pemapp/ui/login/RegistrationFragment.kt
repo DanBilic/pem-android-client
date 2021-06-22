@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
 import com.example.pemapp.data.MainViewModel
 import com.example.pemapp.data.MainViewModelFactory
-import com.example.pemapp.data.MomentsViewModel
 import com.example.pemapp.data.model.DataModel
 import com.example.pemapp.data.repository.Repository
 import com.google.android.material.snackbar.Snackbar
