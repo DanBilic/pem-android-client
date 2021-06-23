@@ -16,77 +16,86 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="@string/onboarding"
-                android:textSize="34sp" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/onboarding3"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/onboarding"
+            android:textColor="@color/light_green"
+            android:textSize="48sp"
+            android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="199dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/eventQuestion"
-                android:textSize="20sp" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/party" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/nextButton"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/light_green"
-            android:text="@string/next"
-            android:textColor="@color/black"
-            app:cornerRadius="50dp" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/onboarding3"
+            android:textColor="@color/light_green"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/eventQuestion"
+            android:textColor="@color/very_light_green"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"  />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/party" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/light_green"
+        android:text="@string/next"
+        android:textColor="@color/black"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
