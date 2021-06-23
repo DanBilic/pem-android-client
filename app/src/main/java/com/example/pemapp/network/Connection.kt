@@ -1,4 +1,4 @@
-package com.example.pemapp.data
+package com.example.pemapp.network
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.example.pemapp.data.model.MomentModel
 import com.example.pemapp.data.repository.Repository
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: Repository): ViewModel() {
+class Connection(private val repository: Repository): ViewModel() {
 
     val writeResponse: MutableLiveData<DataModel> = MutableLiveData()
     val authResponse: MutableLiveData<DataModel> = MutableLiveData()

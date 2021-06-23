@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.data.MainViewModel
-import com.example.pemapp.data.MainViewModelFactory
+import com.example.pemapp.network.Connection
+import com.example.pemapp.network.ConnectionFactory
 import com.example.pemapp.data.model.DataModel
 import com.example.pemapp.data.repository.Repository
 import com.google.android.material.snackbar.Snackbar
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_registration.view.*
 
 class RegistrationFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: Connection
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +34,8 @@ class RegistrationFragment : Fragment() {
 
 
         val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val viewModelFactory = ConnectionFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
 
 
         val regiEmail = view.findViewById<EditText>(R.id.regi_email).text

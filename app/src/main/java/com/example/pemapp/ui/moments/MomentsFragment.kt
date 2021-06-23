@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
-import com.example.pemapp.data.MainViewModel
-import com.example.pemapp.data.MainViewModelFactory
+import com.example.pemapp.network.Connection
+import com.example.pemapp.network.ConnectionFactory
 import com.example.pemapp.data.repository.Repository
 
 class MomentsFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: Connection
     private lateinit var momentsAdapter: MomentsAdapter
 
     override fun onCreateView(
@@ -32,8 +32,8 @@ class MomentsFragment : Fragment() {
 
 
         val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val viewModelFactory = ConnectionFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
 
         viewModel.getMoments()
         viewModel.getMoments.observe(viewLifecycleOwner, { response  ->

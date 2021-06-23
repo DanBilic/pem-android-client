@@ -6,13 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
-import com.example.pemapp.data.MainViewModel
-import com.example.pemapp.data.MainViewModelFactory
 import com.example.pemapp.data.model.MomentModel
-import com.example.pemapp.data.repository.Repository
 
 
 class MomentsAdapter(private val dataSet: List<MomentModel>) :

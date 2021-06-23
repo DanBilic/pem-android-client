@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.data.MainViewModel
-import com.example.pemapp.data.MainViewModelFactory
+import com.example.pemapp.network.Connection
+import com.example.pemapp.network.ConnectionFactory
 import com.example.pemapp.data.repository.Repository
 import com.google.android.material.snackbar.Snackbar
 import com.example.pemapp.ui.discover.DashboardActivity
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 
 class LoginFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: Connection
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +38,8 @@ class LoginFragment : Fragment() {
 
 
         val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        val viewModelFactory = ConnectionFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
 
         view.enterRegistrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
