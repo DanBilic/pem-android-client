@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
@@ -16,12 +17,14 @@ import com.example.pemapp.network.ConnectionFactory
 import com.example.pemapp.data.repository.Repository
 import com.google.android.material.snackbar.Snackbar
 import com.example.pemapp.ui.discover.DashboardActivity
+import com.example.pemapp.ui.profile.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel: Connection
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +52,10 @@ class LoginFragment : Fragment() {
             viewModel.authRead(loginEmail.toString(), loginPassword.toString())
             viewModel.authResponse.observe(viewLifecycleOwner, { response ->
 
-                if (response.name == "success") {
+                if (response.status == "success") {
                     val intent = Intent(getActivity(), DashboardActivity::class.java)
+                    intent.putExtra("Username",response.name)
+                    intent.putExtra("Email", loginEmail.toString())
                     startActivity(intent)
                 } else
                 {
