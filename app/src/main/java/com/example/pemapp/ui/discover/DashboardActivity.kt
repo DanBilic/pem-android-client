@@ -30,7 +30,6 @@ class DashboardActivity : AppCompatActivity() {
 
         if (profileName != null) {
             profileViewModel.setUsernameDirectly(profileName)
-            println("username: "+profileViewModel.getUsername().value)
         }
         if (profileEmail != null) {
             profileViewModel.setEmail(profileEmail)

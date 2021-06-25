@@ -5,19 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pemapp.R
-import com.example.pemapp.network.Connection
-import kotlinx.android.synthetic.main.fragment_discover.view.*
+import com.example.pemapp.ui.notification.Notification
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment() {
 
     private lateinit var username : TextView
+    var notificationId = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +26,12 @@ class ProfileFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+
+        view.profilepicture.setOnClickListener {
+           var notification = Notification(requireContext())
+           notification.showNotification(notificationId)
+        }
 
         return view
     }
