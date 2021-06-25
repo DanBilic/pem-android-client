@@ -62,7 +62,6 @@ class ComposeMomentsFragment : Fragment() {
             saveDataIntoDatabase(encodedImageString)
             Snackbar.make(it,"successful", Snackbar.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_composeMomentsFragment_to_momentsFragment)
-            //decode(imageStringFromDatabase)
         }
 
         return view
@@ -82,12 +81,7 @@ class ComposeMomentsFragment : Fragment() {
     }
 
 
-    private fun decode(string:String) {
 
-        val imageBytes: ByteArray = Base64.decode(string, Base64.DEFAULT)
-        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-        imageView.setImageBitmap(decodedImage)
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveDataIntoDatabase(imageString: String) {
