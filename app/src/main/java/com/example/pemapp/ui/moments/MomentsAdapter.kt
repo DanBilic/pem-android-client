@@ -1,5 +1,8 @@
 package com.example.pemapp.ui.moments
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +21,9 @@ class MomentsAdapter(private val dataSet: List<MomentModel>) :
         var username: TextView = view.findViewById(R.id.usernameView)
         var text: TextView = view.findViewById(R.id.descriptionTextView)
         var posttime: TextView = view.findViewById(R.id.posttimeView)
+        var pictureView: ImageView = view.findViewById(R.id.picture)
         var profilepicture: ImageView = view.findViewById(R.id.profilepicture)
-        //var picture: ImageView = view.findViewById(R.id.year)
+
     }
 
 
@@ -37,10 +41,20 @@ class MomentsAdapter(private val dataSet: List<MomentModel>) :
         holder.username.text = user.username
         holder.text.text = user.text
         holder.posttime.text = user.posttime
+        if (user.picture != "") {
+            println("picture "+user.picture)
+            holder.pictureView.setImageBitmap(decode(user.picture))
+        }
         //holder.profilepicture.setImageBitmap() = user.profilepicture
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
+    }
+
+    private fun decode(string: String): Bitmap {
+
+        val imageBytes: ByteArray = Base64.decode(string, Base64.DEFAULT)
+        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
     }
 }
