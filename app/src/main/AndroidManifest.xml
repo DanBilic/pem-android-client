@@ -13,13 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PemApp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".ui.onboarding.OnboardingActivity"></activity>
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        tools:replace="android:appComponentFactory"
+        tools:targetApi="p">
+        <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.discover.DashboardActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
