@@ -40,10 +40,11 @@ class RegistrationFragment : Fragment() {
 
         val regiEmail = view.findViewById<EditText>(R.id.regi_email).text
         val regiPassword = view.findViewById<EditText>(R.id.regi_pw).text
+        val regiUsername = view.findViewById<EditText>(R.id.regi_username).text
 
 
         view.registerButton.setOnClickListener {
-            val myWrite = DataModel("","Lori, Susan", regiEmail.toString(), regiPassword.toString(), "neutral")
+            val myWrite = DataModel("", regiUsername.toString(), regiEmail.toString(), regiPassword.toString(), "neutral")
             viewModel.pushWrite(myWrite)
             Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 
