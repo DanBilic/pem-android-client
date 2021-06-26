@@ -67,18 +67,4 @@ class LoginFragment : Fragment() {
         return view
     }
 
-    /*override fun onResume() {
-        super.onResume()
-        if(registerModel.getEmail().value != null) {
-            regiEmail = registerModel.getEmail().value!!
-            println(regiEmail)
-        }
-        if(registerModel.getPassword().value != null) {
-            regiPassword = registerModel.getPassword().value!!
-            println(regiPassword)
-        }
-        val myWrite = DataModel("","goodusername", regiEmail, regiPassword, "neutral")
-        viewModel.pushWrite(myWrite)
-    }*/
-
 }

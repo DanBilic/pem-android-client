@@ -38,7 +38,7 @@
             tools:ignore="LabelFor" />
 
         <Button
-            android:id="@+id/addPicture"
+            android:id="@+id/addPictureButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_picture" />

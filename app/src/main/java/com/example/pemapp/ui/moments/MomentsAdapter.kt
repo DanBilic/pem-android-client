@@ -42,7 +42,6 @@ class MomentsAdapter(private val dataSet: List<MomentModel>) :
         holder.text.text = user.text
         holder.posttime.text = user.posttime
         if (user.picture != "") {
-            println("picture "+user.picture)
             holder.pictureView.setImageBitmap(decode(user.picture))
         }
         //holder.profilepicture.setImageBitmap() = user.profilepicture
