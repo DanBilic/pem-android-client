@@ -41,4 +41,12 @@
     <string name="movies">Movies</string>
     <string name="culture">Culture</string>
     <string name="arts">Arts</string>
+    <string name="inputusername">Username</string>
+    <string name="compose">COMPOSE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="compose_layout">Compose</string>
+    <string name="post">post</string>
+    <string name="add_picture">add picture</string>
+    <string name="todo">TODO</string>
 </resources>

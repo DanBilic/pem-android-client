@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.example.pemapp.R
 import com.example.pemapp.network.Connection
 import com.example.pemapp.network.ConnectionFactory
 import com.example.pemapp.data.repository.Repository
+import kotlinx.android.synthetic.main.fragment_moments.view.*
 
 class MomentsFragment : Fragment() {
 
@@ -29,6 +31,10 @@ class MomentsFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_moments, container, false)
+
+        view.composeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_momentsFragment_to_composeMomentsFragment)
+        }
 
 
         val repository = Repository()

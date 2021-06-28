@@ -15,30 +15,5 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-        /*val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.makeRead()
-        viewModel.readResponse.observe(this, Observer { response ->
-            //println(response)
-        })
-
-
-        loginModel.getEmail().observe(this, {
-            email = it
-        })
-
-        loginModel.getPassword().observe(this, {
-            password = it
-        })
-
-        viewModel.authRead("yuemail", "test")
-        viewModel.authResponse.observe(this, Observer { response ->
-            println(response.name)
-        })
-
-        val myWrite = DataModel("","mynameisyu", "yuemail", "test", "weiblich")
-        viewModel.pushWrite(myWrite)*/
     }
 }
