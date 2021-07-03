@@ -48,7 +48,7 @@ class RegistrationFragment : Fragment() {
             viewModel.pushWrite(myWrite)
             Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 
-            findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_registrationFragment_to_onboarding_nav)
         }
 
         return view
