@@ -43,9 +43,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun checkPermission(){
         val appUsageModel = AppUsageModel()
-        if(appUsageModel.checkUsageStatePermission()) {
-            appUsageModel.showUsageStats()
-        } else{
+        if(!appUsageModel.checkUsageStatePermission()) {
             startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
         }
     }

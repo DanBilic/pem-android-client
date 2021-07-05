@@ -44,14 +44,20 @@ class AppUsageModel {
         var cal: Calendar = Calendar.getInstance()
         cal.add(Calendar.DAY_OF_MONTH, -1)
         var queryUsageStats : List <UsageStats> = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, cal.timeInMillis, System.currentTimeMillis())
-        var stats_data : String = ""
+        var stats_data = ""
         for (i in queryUsageStats.indices) {
-            stats_data = stats_data + "Package Name : " + queryUsageStats[i].packageName + "\n" +
-                    "Last Time Used : "+ convertDateTime(queryUsageStats[i].lastTimeUsed) + "\n" +
-                    "Describe Contents: "+ queryUsageStats[i].describeContents() + "\n" +
-                    "First Time Stamp : "+ queryUsageStats[i].firstTimeStamp + "\n" +
-                    "Last Time Stamp : "+ queryUsageStats[i].lastTimeStamp + "\n" +
-                    "Total Time in Foreground : "+ convertTime(queryUsageStats[i].totalTimeInForeground) + "\n\n"
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                stats_data = stats_data + "Package Name : " + queryUsageStats[i].packageName + "\n" +
+                        "Last Time Used : "+ convertDateTime(queryUsageStats[i].lastTimeUsed) + "\n" +
+                        "Describe Contents: "+ queryUsageStats[i].describeContents() + "\n" +
+                        "First Time Stamp : "+ queryUsageStats[i].firstTimeStamp + "\n" +
+                        "Last Time Stamp : "+ queryUsageStats[i].lastTimeStamp + "\n" +
+                        "Total Time in Foreground : "+ convertTime(queryUsageStats[i].totalTimeInForeground) + "\n"+
+                        "Last Time Visible : " + convertDateTime(queryUsageStats[i].lastTimeVisible)  + "\n" +
+                        "Total Time visible: " + convertTime(queryUsageStats[i].totalTimeVisible) + "\n" +
+                        "Last Time Foreground Service Used : " + convertDateTime(queryUsageStats[i].lastTimeForegroundServiceUsed) + "\n" +
+                        "Total Time Foreground Service Used : " + convertTime(queryUsageStats[i].totalTimeForegroundServiceUsed) + "\n"
+            }
         }
 
         print(stats_data)
