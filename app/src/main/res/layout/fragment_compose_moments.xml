@@ -10,6 +10,7 @@
         android:id="@+id/appComposeBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/background"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -21,34 +22,52 @@
             app:title="@string/compose_layout"
             app:titleTextColor="@color/black" />
 
-        <Button
-            android:id="@+id/postButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/post" />
-
-        <EditText
-            android:id="@+id/inputMoments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:autofillHints="Your input..."
-            tools:ignore="LabelFor" />
-
-        <Button
-            android:id="@+id/addPictureButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_picture" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/avatar"
-            android:contentDescription="@string/todo" />
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <Button
+        android:id="@+id/addPictureButton"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/light_green"
+        android:text="@string/add_picture"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/appComposeBar"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/postButton"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/light_green"
+        android:text="@string/post"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toEndOf="@+id/addPictureButton"
+        app:layout_constraintTop_toBottomOf="@+id/appComposeBar" />
+
+    <EditText
+        android:id="@+id/inputMoments"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Your input..."
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/addPictureButton"
+        tools:ignore="LabelFor,MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintTop_toBottomOf="@id/inputMoments"
+        app:srcCompat="@drawable/avatar"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
