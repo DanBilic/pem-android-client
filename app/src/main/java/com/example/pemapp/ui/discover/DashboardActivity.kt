@@ -35,6 +35,7 @@ class DashboardActivity : AppCompatActivity() {
 
         val profileName = intent.getStringExtra("Username")
         val profileEmail = intent.getStringExtra("Email")
+        val profilePicture = intent.getStringExtra("Profilepicture")
 
         //Initialize bottom navigation view
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
@@ -46,6 +47,10 @@ class DashboardActivity : AppCompatActivity() {
         }
         if (profileEmail != null) {
             profileViewModel.setEmail(profileEmail)
+        }
+
+        if (profilePicture != null) {
+            profileViewModel.setProfilepicture(profilePicture)
         }
 
         requestUserLocation()
