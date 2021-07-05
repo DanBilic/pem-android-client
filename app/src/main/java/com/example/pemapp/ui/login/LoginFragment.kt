@@ -49,20 +49,22 @@ class LoginFragment : Fragment() {
         }
 
         view.loginButton.setOnClickListener {
-            viewModel.authRead(loginEmail.toString(), loginPassword.toString())
-            viewModel.authResponse.observe(viewLifecycleOwner, { response ->
+           viewModel.authRead(loginEmail.toString(), loginPassword.toString())
+           viewModel.authResponse.observe(viewLifecycleOwner, { response ->
 
-                if (response.status == "success") {
+               if (response.status == "success") {
                     val intent = Intent(getActivity(), DashboardActivity::class.java)
+
                     intent.putExtra("Username",response.name)
                     intent.putExtra("Email", loginEmail.toString())
                     intent.putExtra("Profilepicture", response.profilepicture)
+
                     startActivity(intent)
-                } else
-                {
-                    Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
-                }
-            })
+               } else
+               {
+                   Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
+               }
+           })
 
         }
         return view

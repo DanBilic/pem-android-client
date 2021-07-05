@@ -1,16 +1,23 @@
 package com.example.pemapp.ui.discover
 
 import android.content.Intent
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.Settings
+
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
 import android.widget.Toast
+
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pemapp.R
+import com.example.pemapp.ui.appUsage.AppUsageModel
 import com.example.pemapp.ui.profile.ProfileViewModel
 import com.example.pemapp.services.UserLocation
 import com.google.android.gms.location.*
@@ -32,6 +39,8 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+        AppUsageModel.setContext(this)
+        checkPermission()
 
         val profileName = intent.getStringExtra("Username")
         val profileEmail = intent.getStringExtra("Email")
@@ -98,5 +107,12 @@ class DashboardActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         requestUserLocation()
+    }
+
+    private fun checkPermission(){
+        val appUsageModel = AppUsageModel()
+        if(!appUsageModel.checkUsageStatePermission()) {
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        }
     }
 }
