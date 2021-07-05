@@ -4,10 +4,10 @@ import com.example.pemapp.data.api.RetrofitInstance
 
 class MomentsNetworkCall {
     suspend fun getMoments(): List<MomentsData> {
-        return RetrofitInstance.api.getMoments()
+        return RetrofitInstance.iMomentsNetworkCall.getMoments()
     }
     suspend fun postMoment(post: MomentsData): MomentsData {
-        return RetrofitInstance.api.postMoment(post)
+        return RetrofitInstance.iMomentsNetworkCall.postMoment(post)
     }
 }
 

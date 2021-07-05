@@ -1,5 +1,8 @@
 package com.example.pemapp.data.api
 
+import com.example.pemapp.ui.dashboard.moments.IMomentsNetworkCall
+import com.example.pemapp.ui.login.ILoginNetworkCall
+import com.example.pemapp.ui.user.IUserNetworkCall
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -9,7 +12,15 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    val api: SimpleApi by lazy {
-        retrofit.create(SimpleApi::class.java)
+    val iMomentsNetworkCall: IMomentsNetworkCall by lazy {
+        retrofit.create(IMomentsNetworkCall::class.java)
     }
+    val iLoginNetworkCall: ILoginNetworkCall by lazy {
+        retrofit.create(ILoginNetworkCall::class.java)
+    }
+
+    val iUserNetworkCall: IUserNetworkCall by lazy {
+        retrofit.create(IUserNetworkCall::class.java)
+    }
+
 }
