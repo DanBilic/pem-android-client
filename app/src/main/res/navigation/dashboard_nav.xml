@@ -51,5 +51,10 @@
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:exitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/appUsageFragment"
+        android:name="com.example.pemapp.ui.appUsage.AppUsage"
+        android:label="fragment_app_usage"
+        tools:layout="@layout/fragment_app_usage" />
 
 </navigation>

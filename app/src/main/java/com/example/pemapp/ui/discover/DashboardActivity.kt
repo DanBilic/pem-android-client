@@ -1,12 +1,15 @@
 package com.example.pemapp.ui.discover
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pemapp.R
+import com.example.pemapp.ui.appUsage.AppUsageModel
 import com.example.pemapp.ui.profile.ProfileViewModel
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,6 +22,8 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+        AppUsageModel.setContext(this)
+        checkPermission()
 
         val profileName = intent.getStringExtra("Username")
         val profileEmail = intent.getStringExtra("Email")
@@ -33,6 +38,15 @@ class DashboardActivity : AppCompatActivity() {
         }
         if (profileEmail != null) {
             profileViewModel.setEmail(profileEmail)
+        }
+    }
+
+    private fun checkPermission(){
+        val appUsageModel = AppUsageModel()
+        if(appUsageModel.checkUsageStatePermission()) {
+            appUsageModel.showUsageStats()
+        } else{
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
         }
     }
 }
