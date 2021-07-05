@@ -22,8 +22,8 @@ import com.example.pemapp.user.network.UserDataConnection
 import com.example.pemapp.notification.Notification
 import com.example.pemapp.user.network.UserConnectionFactory
 import com.example.pemapp.user.network.UserNetworkCall
-import com.example.pemapp.util.Decode
-import com.example.pemapp.util.Encode
+import com.example.pemapp.controller.util.Decode
+import com.example.pemapp.controller.util.Encode
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment() {
@@ -120,7 +120,7 @@ class ProfileFragment : Fragment() {
         val encode = Encode(imageView)
 
         val myWrite = UserData("", "", "",
-            "", encode.CreateImageStringFromBitmap(), "")
+            "", encode.createImageStringFromBitmap(), "")
 
         userDataConnection.modiUser(email.text.toString(), myWrite)
 

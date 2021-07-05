@@ -24,7 +24,7 @@ import com.example.pemapp.dashboard.moments.model.MomentsData
 import com.example.pemapp.dashboard.moments.network.MomentsDataConnection
 import com.example.pemapp.dashboard.moments.network.MomentsNetworkCall
 import com.example.pemapp.dashboard.profile.model.ProfileViewModel
-import com.example.pemapp.util.Encode
+import com.example.pemapp.controller.util.Encode
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_compose_moments.view.*
 import java.time.LocalDateTime
@@ -58,7 +58,7 @@ class ComposeMomentsFragment : Fragment() {
         setupPermissions()
         view.postButton.setOnClickListener {
             val encode = Encode(imageView)
-            saveDataIntoDatabase(encode.CreateImageStringFromBitmap())
+            saveDataIntoDatabase(encode.createImageStringFromBitmap())
             Snackbar.make(it,"successful", Snackbar.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_composeMomentsFragment_to_momentsFragment)
         }
