@@ -28,6 +28,8 @@ import com.example.pemapp.data.model.MomentModel
 import com.example.pemapp.data.repository.Repository
 import com.example.pemapp.network.Connection
 import com.example.pemapp.network.ConnectionFactory
+import com.example.pemapp.ui.profile.ProfileViewModel
+import com.example.pemapp.util.Encode
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_compose_moments.view.*
 import java.io.ByteArrayOutputStream
@@ -40,6 +42,7 @@ class ComposeMomentsFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var inputView: EditText
     private lateinit var viewModel: Connection
+    private lateinit var profileViewModel:ProfileViewModel
     private val RECORD_REQUEST_CODE = 101
     val PICK_IMAGE = 1
 
@@ -53,19 +56,18 @@ class ComposeMomentsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_compose_moments, container, false)
 
+        imageView = view.findViewById(R.id.imageView)
+        inputView = view.findViewById(R.id.inputMoments)
 
         val repository = Repository()
         val viewModelFactory = ConnectionFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
 
 
-        imageView = view.findViewById(R.id.imageView)
-        inputView = view.findViewById(R.id.inputMoments)
-
-
         setupPermissions()
         view.postButton.setOnClickListener {
-            saveDataIntoDatabase(CreateImageStringFromBitmap())
+            val encode = Encode(imageView)
+            saveDataIntoDatabase(encode.CreateImageStringFromBitmap())
             Snackbar.make(it,"successful", Snackbar.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_composeMomentsFragment_to_momentsFragment)
         }
@@ -75,33 +77,25 @@ class ComposeMomentsFragment : Fragment() {
             selectImageInAlbum()
         }
 
+        profileViewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
+
+
         return view
-    }
-
-    private fun CreateImageStringFromBitmap(): String {
-        val bitmap = (imageView.getDrawable() as BitmapDrawable).bitmap
-
-       // val bitmap: Bitmap = BitmapFactory.decodeResource(this.resources, R.drawable.linux)
-
-        val stream = ByteArrayOutputStream()
-
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-
-        val byteArray: ByteArray = stream.toByteArray()
-
-        return encodeToString(byteArray, Base64.DEFAULT)
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveDataIntoDatabase(imageString: String) {
+        val username = profileViewModel.getUsername().value!!
+        val text = inputView.text.toString()
+
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
         val formattedTime = current.format(formatter)
 
-        val text = inputView.text.toString()
+        val profilepicture = profileViewModel.getProfilepicture().value!!
 
-        val myWrite = MomentModel("", "Lori, Susan", text, imageString, formattedTime, "")
+        val myWrite = MomentModel("", username, text, imageString, formattedTime, profilepicture)
         viewModel.postMoment(myWrite)
 
     }

@@ -44,7 +44,9 @@ class MomentsAdapter(private val dataSet: List<MomentModel>) :
         if (user.picture != "") {
             holder.pictureView.setImageBitmap(decode(user.picture))
         }
-        //holder.profilepicture.setImageBitmap() = user.profilepicture
+        if (user.profilepicture != "") {
+            holder.profilepicture.setImageBitmap(decode(user.profilepicture))
+        }
     }
 
     override fun getItemCount(): Int {
