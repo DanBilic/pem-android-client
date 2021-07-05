@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.provider.Settings
 
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.os.Looper
-import android.provider.Settings
 import android.widget.Toast
 
 import androidx.activity.viewModels
@@ -21,6 +18,7 @@ import com.example.pemapp.ui.appUsage.AppUsageModel
 import com.example.pemapp.ui.profile.ProfileViewModel
 import com.example.pemapp.services.UserLocation
 import com.google.android.gms.location.*
+import com.google.android.gms.location.LocationServices
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

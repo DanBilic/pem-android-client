@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.data.model.DataModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_onboarding3.view.*
 
 
