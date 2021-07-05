@@ -1,6 +1,6 @@
-package com.example.pemapp.ui.appUsage
+package com.example.pemapp.ui.dashboard.appUsage
 
-data class AppDetail (
+data class AppUsageData (
     val appName: String,
     val lastTimeUsed: String,
     val firstTimeStamp: String,

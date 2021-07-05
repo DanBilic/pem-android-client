@@ -1,4 +1,4 @@
-package com.example.pemapp.ui.appUsage
+package com.example.pemapp.ui.dashboard.appUsage
 
 import android.Manifest
 import android.app.AppOpsManager
@@ -21,7 +21,7 @@ class AppUsageModel {
         private lateinit var context: Context
 
         fun setContext(con: Context) {
-            context=con
+            context =con
         }
     }
 

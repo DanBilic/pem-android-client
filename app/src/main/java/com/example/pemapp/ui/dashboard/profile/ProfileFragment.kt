@@ -1,4 +1,4 @@
-package com.example.pemapp.ui.profile
+package com.example.pemapp.ui.dashboard.profile
 
 import android.Manifest
 import android.app.Activity
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,11 +16,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.pemapp.R
-import com.example.pemapp.data.model.UserModel
-import com.example.pemapp.data.repository.Repository
-import com.example.pemapp.network.Connection
-import com.example.pemapp.network.ConnectionFactory
+import com.example.pemapp.ui.user.UserData
+import com.example.pemapp.ui.user.UserDataConnection
 import com.example.pemapp.ui.notification.Notification
+import com.example.pemapp.ui.user.UserConnectionFactory
+import com.example.pemapp.ui.user.UserNetworkCall
 import com.example.pemapp.util.Decode
 import com.example.pemapp.util.Encode
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -31,7 +30,7 @@ class ProfileFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var username : TextView
     private lateinit var email : TextView
-    private lateinit var viewModel: Connection
+    private lateinit var userDataConnection: UserDataConnection
     private val RECORD_REQUEST_CODE = 101
     val PICK_IMAGE = 1
     var notificationId = 0
@@ -46,9 +45,9 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        val repository = Repository()
-        val viewModelFactory = ConnectionFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
+        val userNetworkCall = UserNetworkCall()
+        val userConnectionFactory = UserConnectionFactory(userNetworkCall)
+        userDataConnection = ViewModelProvider(this, userConnectionFactory).get(UserDataConnection::class.java)
 
 
         imageView = view.findViewById(R.id.profilepicture)
@@ -119,10 +118,10 @@ class ProfileFragment : Fragment() {
     private fun saveToDatabase() {
         val encode = Encode(imageView)
 
-        val myWrite = UserModel("", "", "",
+        val myWrite = UserData("", "", "",
             "", encode.CreateImageStringFromBitmap(), "")
 
-        viewModel.modiUser(email.text.toString(), myWrite)
+        userDataConnection.modiUser(email.text.toString(), myWrite)
 
     }
 

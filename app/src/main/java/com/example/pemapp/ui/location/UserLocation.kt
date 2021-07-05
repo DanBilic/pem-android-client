@@ -1,22 +1,12 @@
-package com.example.pemapp.services
+package com.example.pemapp.ui.location
 
 import android.Manifest
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import android.location.LocationManager
-import android.os.Looper
-import android.provider.Settings
-import android.util.Log
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.example.pemapp.BuildConfig
 import com.google.android.gms.location.*
-import okhttp3.*
-import org.json.JSONObject
-import java.io.IOException
 
 
 class UserLocation {

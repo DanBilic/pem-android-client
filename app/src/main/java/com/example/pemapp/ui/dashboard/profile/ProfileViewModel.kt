@@ -1,15 +1,15 @@
-package com.example.pemapp.ui.profile
+package com.example.pemapp.ui.dashboard.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pemapp.data.model.MomentModel
+import com.example.pemapp.ui.dashboard.moments.MomentsData
 
 class ProfileViewModel: ViewModel() {
     private var username: MutableLiveData<String> = MutableLiveData()
     private var email: MutableLiveData<String> = MutableLiveData()
     private var profilepicture: MutableLiveData<String> = MutableLiveData()
 
-    private var moments: MutableLiveData<List<MomentModel>> = MutableLiveData()
+    private var moments: MutableLiveData<List<MomentsData>> = MutableLiveData()
     private var text: MutableLiveData<String> = MutableLiveData()
     private var posttime: MutableLiveData<String> = MutableLiveData()
     private var picture: MutableLiveData<String> = MutableLiveData()
@@ -44,7 +44,7 @@ class ProfileViewModel: ViewModel() {
 
 
 
-    fun setUsers(_users: List<MomentModel>) {
+    fun setUsers(_users: List<MomentsData>) {
         moments.postValue(_users)
     }
 

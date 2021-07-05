@@ -9,7 +9,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.pemapp.R
-import com.example.pemapp.ui.discover.DashboardActivity
+import com.example.pemapp.ui.dashboard.DashboardActivity
 
 
 class Notification(private val context: Context) {

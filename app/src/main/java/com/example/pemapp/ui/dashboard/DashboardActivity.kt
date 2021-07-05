@@ -1,4 +1,4 @@
-package com.example.pemapp.ui.discover
+package com.example.pemapp.ui.dashboard
 
 import android.content.Intent
 
@@ -14,9 +14,9 @@ import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pemapp.R
-import com.example.pemapp.ui.appUsage.AppUsageModel
-import com.example.pemapp.ui.profile.ProfileViewModel
-import com.example.pemapp.services.UserLocation
+import com.example.pemapp.ui.dashboard.appUsage.AppUsageModel
+import com.example.pemapp.ui.dashboard.profile.ProfileViewModel
+import com.example.pemapp.ui.location.UserLocation
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationServices
 

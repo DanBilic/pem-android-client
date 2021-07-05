@@ -27,7 +27,7 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="p">
         <activity android:name=".ui.onboarding.OnboardingActivity" />
-        <activity android:name=".ui.discover.DashboardActivity" />
+        <activity android:name=".ui.dashboard.DashboardActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

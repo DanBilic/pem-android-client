@@ -1,15 +1,14 @@
-package com.example.pemapp.ui.appUsage
+package com.example.pemapp.ui.dashboard.appUsage
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
 
-class AppUsageAdapter(private val dataSet: List<AppDetail>) :
+class AppUsageAdapter(private val dataSet: List<AppUsageData>) :
     RecyclerView.Adapter<AppUsageAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,7 +25,7 @@ class AppUsageAdapter(private val dataSet: List<AppDetail>) :
 
 
     @NonNull
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.app_usage_list, viewGroup, false)
         return ViewHolder(view)

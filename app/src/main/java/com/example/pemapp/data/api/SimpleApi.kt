@@ -1,7 +1,7 @@
 package com.example.pemapp.data.api
 
-import com.example.pemapp.data.model.UserModel
-import com.example.pemapp.data.model.MomentModel
+import com.example.pemapp.ui.user.UserData
+import com.example.pemapp.ui.dashboard.moments.MomentsData
 import retrofit2.http.*
 
 interface SimpleApi {
@@ -10,25 +10,25 @@ interface SimpleApi {
     suspend fun authRead(
         @Query("email") email:String,
         @Query("password") password:String
-    ): UserModel
+    ): UserData
 
     @POST("user")
     suspend fun pushWrite(
-        @Body post: UserModel
-    ): UserModel
+        @Body post: UserData
+    ): UserData
 
     @GET("moments")
-    suspend fun getMoments(): List<MomentModel>
+    suspend fun getMoments(): List<MomentsData>
 
     @POST("moment")
     suspend fun postMoment(
-        @Body post: MomentModel
-    ): MomentModel
+        @Body post: MomentsData
+    ): MomentsData
 
     @PUT("modify_user")
     suspend fun modiUser(
         @Query("email") email:String,
-        @Body post: UserModel
-    ): UserModel
+        @Body post: UserData
+    ): UserData
 
 }

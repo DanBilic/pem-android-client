@@ -1,4 +1,4 @@
-package com.example.pemapp.ui.discover
+package com.example.pemapp.ui.dashboard.discover
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

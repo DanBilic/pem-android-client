@@ -1,9 +1,9 @@
-package com.example.pemapp.data.model
+package com.example.pemapp.ui.user
 
 import com.google.gson.annotations.SerializedName
 
 
-data class UserModel (
+data class UserData (
     @SerializedName("userId")
     val _id: String,
     val name: String,
