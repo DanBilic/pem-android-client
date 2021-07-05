@@ -22,6 +22,10 @@
     <string name="social_event">Social Event</string>
     <string name="profile">Profile</string>
     <string name="appUsage">App Usage</string>
+    <string name="dayAppUsage">Day</string>
+    <string name="weekAppUsage">Week</string>
+    <string name="monthAppUsage">Month</string>
+    <string name="yearAppUsage">Year</string>
 
     <!-- Onboarding -->
     <string name="onboarding">Onboarding</string>
