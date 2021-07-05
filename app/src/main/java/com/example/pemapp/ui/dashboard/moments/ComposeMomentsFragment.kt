@@ -1,16 +1,11 @@
-package com.example.pemapp.ui.moments
+package com.example.pemapp.ui.dashboard.moments
 
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
-import android.util.Base64
-import android.util.Base64.encodeToString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,25 +19,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.data.model.MomentModel
-import com.example.pemapp.data.repository.Repository
-import com.example.pemapp.network.Connection
-import com.example.pemapp.network.ConnectionFactory
-import com.example.pemapp.ui.profile.ProfileViewModel
+import com.example.pemapp.ui.dashboard.profile.ProfileViewModel
 import com.example.pemapp.util.Encode
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_compose_moments.view.*
-import java.io.ByteArrayOutputStream
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-
 class ComposeMomentsFragment : Fragment() {
-
     private lateinit var imageView: ImageView
     private lateinit var inputView: EditText
-    private lateinit var viewModel: Connection
-    private lateinit var profileViewModel:ProfileViewModel
+    private lateinit var momentsDataConnection: MomentsDataConnection
+    private lateinit var profileViewModel: ProfileViewModel
     private val RECORD_REQUEST_CODE = 101
     val PICK_IMAGE = 1
 
@@ -59,10 +47,9 @@ class ComposeMomentsFragment : Fragment() {
         imageView = view.findViewById(R.id.imageView)
         inputView = view.findViewById(R.id.inputMoments)
 
-        val repository = Repository()
-        val viewModelFactory = ConnectionFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
-
+        val momentsNetworkCall = MomentsNetworkCall()
+        val viewModelFactory = MomentsConnectionFactory(momentsNetworkCall)
+        momentsDataConnection = ViewModelProvider(this, viewModelFactory).get(MomentsDataConnection::class.java)
 
         setupPermissions()
         view.postButton.setOnClickListener {
@@ -78,11 +65,8 @@ class ComposeMomentsFragment : Fragment() {
         }
 
         profileViewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
-
-
         return view
     }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveDataIntoDatabase(imageString: String) {
@@ -95,8 +79,8 @@ class ComposeMomentsFragment : Fragment() {
 
         val profilepicture = profileViewModel.getProfilepicture().value!!
 
-        val myWrite = MomentModel("", username, text, imageString, formattedTime, profilepicture)
-        viewModel.postMoment(myWrite)
+        val myWrite = MomentsData("", username, text, imageString, formattedTime, profilepicture)
+        momentsDataConnection.postMoment(myWrite)
 
     }
 

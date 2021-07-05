@@ -1,6 +1,6 @@
-package com.example.pemapp.data.model
+package com.example.pemapp.ui.dashboard.moments
 
-data class MomentModel (
+data class MomentsData (
     val _id: String,
     val username: String,
     val text: String,

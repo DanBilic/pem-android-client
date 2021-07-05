@@ -10,17 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.network.Connection
-import com.example.pemapp.network.ConnectionFactory
-import com.example.pemapp.data.model.UserModel
-import com.example.pemapp.data.repository.Repository
-import com.google.android.material.snackbar.Snackbar
+import com.example.pemapp.ui.user.UserConnectionFactory
+import com.example.pemapp.ui.user.UserData
+import com.example.pemapp.ui.user.UserDataConnection
+import com.example.pemapp.ui.user.UserNetworkCall
 import kotlinx.android.synthetic.main.fragment_registration.view.*
 
 
 class RegistrationFragment : Fragment() {
 
-    private lateinit var viewModel: Connection
+    private lateinit var userDataConnection: UserDataConnection
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +32,9 @@ class RegistrationFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
 
 
-        val repository = Repository()
-        val viewModelFactory = ConnectionFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
+        val userNetworkCall = UserNetworkCall()
+        val userConnectionFactory = UserConnectionFactory(userNetworkCall)
+        userDataConnection = ViewModelProvider(this, userConnectionFactory).get(UserDataConnection::class.java)
 
 
         val regiEmail = view.findViewById<EditText>(R.id.regi_email).text
@@ -44,9 +43,9 @@ class RegistrationFragment : Fragment() {
 
 
         view.registerButton.setOnClickListener {
-            val myWrite = UserModel("", regiUsername.toString(), regiEmail.toString(),
+            val myWrite = UserData("", regiUsername.toString(), regiEmail.toString(),
                 regiPassword.toString(), "", "")
-            viewModel.pushWrite(myWrite)
+            userDataConnection.pushWrite(myWrite)
 //            Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 
             findNavController().navigate(R.id.action_registrationFragment_to_onboarding_nav)

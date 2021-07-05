@@ -8,23 +8,15 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.network.Connection
-import com.example.pemapp.network.ConnectionFactory
-import com.example.pemapp.data.repository.Repository
 import com.google.android.material.snackbar.Snackbar
-import com.example.pemapp.ui.discover.DashboardActivity
-import com.example.pemapp.ui.profile.ProfileViewModel
+import com.example.pemapp.ui.dashboard.DashboardActivity
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
-
 class LoginFragment : Fragment() {
-
-    private lateinit var viewModel: Connection
-
+    private lateinit var loginDataConnection: LoginDataConnection
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,17 +32,17 @@ class LoginFragment : Fragment() {
         val loginPassword = view.findViewById<EditText>(R.id.login_password).text
 
 
-        val repository = Repository()
-        val viewModelFactory = ConnectionFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(Connection::class.java)
+        val loginNetworkCall = LoginNetworkCall()
+        val loginConnectionFactory = LoginConnectionFactory(loginNetworkCall)
+        loginDataConnection = ViewModelProvider(this, loginConnectionFactory).get(LoginDataConnection::class.java)
 
         view.enterRegistrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 
         view.loginButton.setOnClickListener {
-           viewModel.authRead(loginEmail.toString(), loginPassword.toString())
-           viewModel.authResponse.observe(viewLifecycleOwner, { response ->
+           loginDataConnection.authRead(loginEmail.toString(), loginPassword.toString())
+           loginDataConnection.authResponse.observe(viewLifecycleOwner, { response ->
 
                if (response.status == "success") {
                     val intent = Intent(getActivity(), DashboardActivity::class.java)

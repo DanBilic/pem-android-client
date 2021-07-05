@@ -1,4 +1,4 @@
-package com.example.pemapp.ui.moments
+package com.example.pemapp.ui.dashboard.moments
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -11,10 +11,8 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
-import com.example.pemapp.data.model.MomentModel
 
-
-class MomentsAdapter(private val dataSet: List<MomentModel>) :
+class MomentsAdapter(private val dataSet: List<MomentsData>) :
     RecyclerView.Adapter<MomentsAdapter.MyViewHolder>() {
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -23,9 +21,7 @@ class MomentsAdapter(private val dataSet: List<MomentModel>) :
         var posttime: TextView = view.findViewById(R.id.posttimeView)
         var pictureView: ImageView = view.findViewById(R.id.picture)
         var profilepicture: ImageView = view.findViewById(R.id.profilepicture)
-
     }
-
 
     @NonNull
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -35,8 +31,6 @@ class MomentsAdapter(private val dataSet: List<MomentModel>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-
         val user = dataSet[position]
         holder.username.text = user.username
         holder.text.text = user.text
