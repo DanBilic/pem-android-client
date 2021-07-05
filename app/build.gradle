@@ -2,7 +2,11 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.android.extensions'
+    id 'com.google.secrets_gradle_plugin' version '0.5'
 }
+
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
     compileSdkVersion 30
@@ -52,6 +56,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -66,8 +73,9 @@ dependencies {
 
     //Dependency for Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
 
 
     //Coroutines
