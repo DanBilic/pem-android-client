@@ -23,9 +23,6 @@
     android:name="com.example.pemapp.ui.login.RegistrationFragment"
     android:label="fragment_registration"
     tools:layout="@layout/fragment_registration" >
-<!--    <action-->
-<!--        android:id="@+id/action_registrationFragment_to_loginFragment"-->
-<!--        app:destination="@id/loginFragment" />-->
         <action
             android:id="@+id/action_registrationFragment_to_onboarding_nav"
             app:destination="@id/nav_onboarding" />
@@ -34,16 +31,10 @@
     <navigation android:id="@+id/nav_dashboard"
         app:startDestination="@id/dashboard_nav_graph">
         <include app:graph="@navigation/dashboard_nav" />
-<!--        <action-->
-<!--            android:id="@+id/action_global_loginFragment2"-->
-<!--            app:destination="@id/loginFragment" />-->
     </navigation>
     <navigation android:id="@+id/nav_onboarding"
         app:startDestination="@id/onboarding_nav_graph">
         <include app:graph="@navigation/onboarding_nav" />
-        <!--        <action-->
-        <!--            android:id="@+id/action_global_loginFragment2"-->
-        <!--            app:destination="@id/loginFragment" />-->
     </navigation>
 
 </navigation>

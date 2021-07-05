@@ -72,7 +72,7 @@
             android:textStyle="bold|italic" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/photoButton"
             style="@style/Widget.AppCompat.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
