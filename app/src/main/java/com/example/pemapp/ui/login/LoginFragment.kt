@@ -56,6 +56,7 @@ class LoginFragment : Fragment() {
                     val intent = Intent(getActivity(), DashboardActivity::class.java)
                     intent.putExtra("Username",response.name)
                     intent.putExtra("Email", loginEmail.toString())
+                    intent.putExtra("Profilepicture", response.profilepicture)
                     startActivity(intent)
                 } else
                 {
