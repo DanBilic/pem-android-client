@@ -25,9 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardActivity : AppCompatActivity() {
 
-    val profileViewModel: ProfileViewModel by viewModels()
-
-    //Location
+    private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationCallback: LocationCallback
@@ -38,7 +36,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         AppUsageModel.setContext(this)
-        checkPermission()
+        checkUserPermission()
 
         val profileName = intent.getStringExtra("Username")
         val profileEmail = intent.getStringExtra("Email")
@@ -60,11 +58,18 @@ class DashboardActivity : AppCompatActivity() {
             profileViewModel.setProfilepicture(profilePicture)
         }
 
+
+    }
+    private fun checkUserPermission(){
+        val appUsageModel = AppUsageModel()
+        if(!appUsageModel.checkUsageStatePermission()) {
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        }
         requestUserLocation()
     }
 
     private fun requestUserLocation() {
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         if(UserLocation().checkLocationPermission(this.applicationContext)){
             if (UserLocation().isLocationEnabled(this.applicationContext)){
                 fusedLocationProviderClient.lastLocation.addOnCompleteListener(this) { task ->
@@ -92,12 +97,11 @@ class DashboardActivity : AppCompatActivity() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 currentLatitude = locationResult!!.lastLocation.latitude
                 currentLongitude = locationResult!!.lastLocation.longitude
-
             }
         }
     }
 
-    fun requestNewLocationData() {
+    private fun requestNewLocationData() {
         locationRequest = LocationRequest()
         UserLocation().requestNewLocationData(locationRequest)
     }
@@ -105,12 +109,5 @@ class DashboardActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         requestUserLocation()
-    }
-
-    private fun checkPermission(){
-        val appUsageModel = AppUsageModel()
-        if(!appUsageModel.checkUsageStatePermission()) {
-            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-        }
     }
 }

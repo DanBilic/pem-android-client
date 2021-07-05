@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/appUsageFragment"
-        android:name="com.example.pemapp.dashboard.appUsage.AppUsage"
+        android:name="com.example.pemapp.dashboard.appUsage.fragment.AppUsage"
         android:label="fragment_app_usage"
         tools:layout="@layout/fragment_app_usage" />
 

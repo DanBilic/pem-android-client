@@ -1,4 +1,4 @@
-package com.example.pemapp.dashboard.appUsage
+package com.example.pemapp.dashboard.appUsage.fragment
 
 import android.content.Intent
 import android.os.Bundle
