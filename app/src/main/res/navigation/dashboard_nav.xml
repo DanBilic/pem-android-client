@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.example.pemapp.ui.discover.DiscoverFragment"
+        android:name="com.example.pemapp.dashboard.discover.DiscoverFragment"
         android:label="fragment_discover"
         tools:layout="@layout/fragment_discover" >
         <action
             android:id="@+id/action_discoverFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/discoverDetailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.pemapp.ui.discover.DetailFragment"
+        android:id="@+id/discoverDetailFragment"
+        android:name="com.example.pemapp.dashboard.discover.DiscoverDetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_discover_detail" >
         <action
             android:id="@+id/action_detailFragment_to_discoverFragment"
             app:destination="@id/discoverFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.pemapp.ui.profile.ProfileFragment"
+        android:name="com.example.pemapp.dashboard.profile.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/momentsFragment"
-        android:name="com.example.pemapp.ui.moments.MomentsFragment"
+        android:name="com.example.pemapp.dashboard.moments.fragment.MomentsFragment"
         android:label="fragment_moments"
         tools:layout="@layout/fragment_moments" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/composeMomentsFragment"
-        android:name="com.example.pemapp.ui.moments.ComposeMomentsFragment"
+        android:name="com.example.pemapp.dashboard.moments.fragment.ComposeMomentsFragment"
         android:label="fragment_compose_moments"
         tools:layout="@layout/fragment_compose_moments" >
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/appUsageFragment"
-        android:name="com.example.pemapp.ui.appUsage.AppUsage"
+        android:name="com.example.pemapp.dashboard.appUsage.fragment.AppUsage"
         android:label="fragment_app_usage"
         tools:layout="@layout/fragment_app_usage" />
 
