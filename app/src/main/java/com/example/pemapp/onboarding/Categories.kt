@@ -2,7 +2,6 @@ package com.example.pemapp.onboarding
 
 object Categories {
     val categoriesList : List<String>
-
         //TODO more categories
         = listOf(
         //Party
@@ -35,7 +34,4 @@ object Categories {
         "Food"
 
         )
-
-
-
 }
