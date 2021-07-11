@@ -7,14 +7,18 @@ import android.os.Bundle
 import android.provider.Settings
 
 import android.location.Location
+import android.os.Build
 import android.os.Looper
 import android.widget.Toast
 
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.pemapp.R
 import com.example.pemapp.dashboard.appUsage.model.AppUsageModel
+import com.example.pemapp.dashboard.appUsage.model.CheckAppsVisible
+import com.example.pemapp.dashboard.appUsage.model.ListeningToActivityCallbacks
 import com.example.pemapp.dashboard.profile.model.ProfileViewModel
 import com.example.pemapp.location.UserLocation
 import com.google.android.gms.location.*
@@ -32,10 +36,13 @@ class DashboardActivity : AppCompatActivity() {
     private var currentLatitude: Double = 0.0
     private var currentLongitude: Double = 0.0
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerActivityLifecycleCallbacks(ListeningToActivityCallbacks())
         setContentView(R.layout.activity_dashboard)
         AppUsageModel.setContext(this)
+        CheckAppsVisible.setContext(this)
         checkUserPermission()
 
         val profileName = intent.getStringExtra("Username")

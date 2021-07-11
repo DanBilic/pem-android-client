@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.pemapp.R
 import com.example.pemapp.dashboard.appUsage.model.AppUsageAdapter
 import com.example.pemapp.dashboard.appUsage.model.AppUsageModel
+import com.example.pemapp.dashboard.appUsage.model.CheckAppsVisible
 
 class AppUsage : Fragment() {
     private lateinit var appUsageAdapter: AppUsageAdapter
@@ -22,9 +23,11 @@ class AppUsage : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_app_usage, container, false)
         val appUsageModel = AppUsageModel()
+        //val checkAppsVisible = CheckAppsVisible()
+        //checkAppsVisible.startCheck()
 
         if(appUsageModel.checkUsageStatePermission()) {
-            appUsageModel.showUsageStats()
+            appUsageModel.getUsageStatsSocialAppsDay()
         } else{
             startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
         }
