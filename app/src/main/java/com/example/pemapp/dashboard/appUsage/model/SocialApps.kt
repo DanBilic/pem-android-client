@@ -11,11 +11,6 @@ object SocialApps {
         "instagram",
         "facebook",
         "telegram",
-        "camera",
-        "spotify",
-        "chrome",
-        "twitter",
-        "garmin"
-
+        "twitter"
     )
 }

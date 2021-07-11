@@ -3,40 +3,39 @@ package com.example.pemapp.dashboard.appUsage.model
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
+import org.w3c.dom.Text
 
 class AppUsageAdapter(private val dataSet: List<AppUsageData>) :
-    RecyclerView.Adapter<AppUsageAdapter.ViewHolder>() {
+    RecyclerView.Adapter<AppUsageAdapter.MyViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val appName = view.findViewById<TextView>(R.id.appNameTextView)
-        val lastTimeUsed = view.findViewById<TextView>(R.id.lastTimeUsed)
-//        val firstTimeStamp = view.findViewById<TextView>(R.id.appName)
-//        val lastTimeStamp = view.findViewById<TextView>(R.id.appName)
-        val totalTimeInForeground = view.findViewById<TextView>(R.id.totalTimeForeground)
-//        val lastTimeVisible = view.findViewById<TextView>(R.id.appName)
-        val totalTimeVisible = view.findViewById<TextView>(R.id.totalTimeVisible)
-//        val lastTimeForegroundServiceUsed = view.findViewById<TextView>(R.id.appName)
-//        val totalTimeForegroundServiceUsed = view.findViewById<TextView>(R.id.appName)
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val appName: TextView = view.findViewById(R.id.appNameTextView)
+        val lastTimeUsed: TextView = view.findViewById(R.id.lastTimeUsed)
+        val totalTimeVisible: TextView = view.findViewById(R.id.totalTimeVisible)
+        val imageView: ImageView = view.findViewById(R.id.appIcon)
+        val countUsage: TextView = view.findViewById(R.id.countUsage)
     }
 
 
     @NonNull
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.app_usage_list, viewGroup, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.app_usage_list, parent, false)
+        return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val appUsage = dataSet[position]
-        viewHolder.appName.text = appUsage.appName
-        viewHolder.lastTimeUsed.text = appUsage.lastTimeUsed
-        viewHolder.totalTimeInForeground.text = appUsage.totalTimeInForeground
-        viewHolder.totalTimeVisible.text = appUsage.totalTimeVisible
+        holder.appName.text = appUsage.appName
+        holder.lastTimeUsed.text = appUsage.lastTimeUsed
+        holder.totalTimeVisible.text = appUsage.totalTimeVisible
+        holder.imageView.setImageResource(appUsage.picture)
+        holder.countUsage.text = appUsage.countUsage.toString()
     }
 
     override fun getItemCount(): Int {

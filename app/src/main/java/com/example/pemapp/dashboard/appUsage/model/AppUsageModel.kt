@@ -11,9 +11,10 @@ import android.os.Build
 import android.os.Process.myUid
 import androidx.annotation.RequiresApi
 import androidx.core.app.AppOpsManagerCompat.MODE_ALLOWED
-import com.example.pemapp.dashboard.appUsage.fragment.AppUsage
-import com.example.pemapp.user.model.UserData
+import com.example.pemapp.R
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -22,7 +23,8 @@ class AppUsageModel {
     companion object {
 
         private lateinit var context: Context
-        private val appUsageList: MutableList<AppUsageData> = mutableListOf()
+        val appUsageList: MutableList<AppUsageData> = mutableListOf()
+        val appUsageSelected: MutableList<AppUsageData> = mutableListOf()
 
         fun setContext(con: Context) {
             context = con
@@ -54,51 +56,87 @@ class AppUsageModel {
             cal.timeInMillis,
             System.currentTimeMillis()
         )
-        for (i in queryUsageStats.indices) {
-            for (apps in SocialApps.socialAppsList) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    //if (queryUsageStats[i].packageName.contains(apps)) {
-                        var appUsageD = AppUsageData(
-                            queryUsageStats[i].packageName,
-                            convertDateTime(queryUsageStats[i].lastTimeUsed),
-                            queryUsageStats[i].firstTimeStamp,
-                            queryUsageStats[i].lastTimeStamp,
-                            convertTime(queryUsageStats[i].totalTimeInForeground),
-                            convertDateTime(queryUsageStats[i].lastTimeVisible),
-                            convertTime(queryUsageStats[i].totalTimeVisible),
-                            convertDateTime(queryUsageStats[i].lastTimeForegroundServiceUsed),
-                            convertTime(queryUsageStats[i].totalTimeForegroundServiceUsed)
-                        )
-                        appUsageList.add(appUsageD)
-                   // }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            for (i in queryUsageStats.indices) {
+                if (queryUsageStats[i].lastTimeUsed != 0L && currentTime(queryUsageStats[i].lastTimeUsed)) {
+                    for (apps in SocialApps.socialAppsList) {
+                        if (queryUsageStats[i].packageName.contains(apps)) {
+                            var appUsageD = AppUsageData(
+                                queryUsageStats[i].packageName,
+                                setAppName(queryUsageStats[i].packageName, apps),
+                                getPictureApp(apps),
+                                0,
+                                convertDateTime(queryUsageStats[i].lastTimeUsed),
+                                convertTime(queryUsageStats[i].totalTimeVisible)
+                            )
+                            appUsageList.add(appUsageD)
+                        }
+                    }
                 }
             }
-        }
-        var isappActive = usageStatsManager.isAppInactive("com.spotify.music")
-        println("IS ACTIVE?? " + isappActive)
-
-        for (element in appUsageList) {
-            //println("apps : " + element.appName)
-            for (apps in SocialApps.socialAppsList) {
-                //println("element " + element.appName + " apps " + apps)
-                if (element.appName.contains(apps)) {
-                    println("app Name : " + element.appName)
-                    println("last time used : " + element.lastTimeUsed)
-                    println("first time stamp : " + element.firstTimeStamp)
-                    println("last time stamp : " + element.lastTimeStamp)
-                    println("total timein foreground : " + element.totalTimeInForeground)
-                    println("last time visible : " + element.lastTimeVisible)
-                    println("total time visible : " + element.totalTimeVisible)
-                    println("last time foreground service : " + element.lastTimeForegroundServiceUsed)
-                    println("total time foreground service : " + element.totalTimeForegroundServiceUsed)
-
-                }
-            }
-
-
         }
     }
 
+    fun groupList(){
+        var sortedAppUsageList = appUsageList.groupBy { it.appName }
+        for (sortedApp in sortedAppUsageList.values) {
+            appUsageSelected.add(
+                AppUsageData(
+                    sortedApp[sortedApp.lastIndex].packageName,
+                    sortedApp[sortedApp.lastIndex].appName,
+                    sortedApp[sortedApp.lastIndex].picture,
+                    sortedApp.size,
+                    sortedApp[sortedApp.lastIndex].lastTimeUsed,
+                    sortedApp[sortedApp.lastIndex].totalTimeVisible
+                )
+            )
+        }
+
+        /*for (element in appUsageSelected) {
+            println("----------------------------------------------------------")
+            println("package Name : " + element.packageName)
+            println("app Name : " + element.appName)
+            println("last time used : " + element.lastTimeUsed)
+            println("total time visible : " + element.totalTimeVisible)
+        }*/
+    }
+
+    private fun setAppName(packageName: String, appName: String): String {
+        var appN = ""
+        if (packageName.equals("com.facebook.orca")) {
+            appN = "facebook messenger"
+        } else if (packageName.equals("com.facebook.katana")) {
+            appN = "facebook"
+        } else {
+            appN = appName
+        }
+        return appN
+    }
+
+    private fun getPictureApp(appName: String): Int {
+        var picture = 0
+        if (appName.equals("youtube")) {
+            picture = R.drawable.youtube_icon
+        } else if (appName.equals("whatsapp")) {
+            picture = R.drawable.whatsapp_icon
+        } else if (appName.equals("snapchat")) {
+            picture = R.drawable.snapchat_icon
+        } else if (appName.equals("tikTok")) {
+            picture = R.drawable.tiktok_icon
+        } else if (appName.equals("instagram")) {
+            picture = R.drawable.instagram_icon
+        } else if (appName.equals("facebook")) {
+            picture = R.drawable.facebook_icon
+        } else if (appName.equals("telegram")) {
+            picture = R.drawable.telegram_icon
+        } else if (appName.equals("twitter")) {
+            picture = R.drawable.twitter_icon
+        } else if (appName.equals("facebook messanger")) {
+            picture = R.drawable.messanger_icon
+        }
+        return picture
+
+    }
 
     private fun convertDateTime(lastTimeUsed: Long): String {
         var date = Date(lastTimeUsed)
@@ -111,4 +149,17 @@ class AppUsageModel {
         var format = SimpleDateFormat("hh:mm", Locale.ENGLISH)
         return format.format(date)
     }
+
+    private fun currentTime(lastTimeUsed: Long): Boolean {
+        var bool = false
+        var firstDay: Calendar = GregorianCalendar(2021, 1, 1)
+        var lastTimeUsedDate = Date(lastTimeUsed)
+        var last: Calendar = Calendar.getInstance()
+        last.set(1900 + lastTimeUsedDate.year, lastTimeUsedDate.month, lastTimeUsedDate.date)
+        if (last.after(firstDay)) {
+            bool = true
+        }
+        return bool
+    }
 }
+
