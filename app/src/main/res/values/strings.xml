@@ -38,6 +38,7 @@
     <string name="uploadAPhoto">Upload a photo.</string>
     <string name="eventQuestion">What do you want to do in your leisure time?</string>
     <string name="next">Next</string>
+    <string name="save">Save</string>
     <string name="party">Party</string>
     <string name="sport">Sport</string>
     <string name="food">Food</string>
@@ -47,6 +48,7 @@
     <string name="arts">Arts</string>
     <string name="inputusername">Username</string>
     <string name="compose">COMPOSE</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="compose_layout">Compose</string>

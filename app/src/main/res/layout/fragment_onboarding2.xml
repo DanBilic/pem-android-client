@@ -66,23 +66,66 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:text="@string/uploadAPhoto"
             android:textColor="@color/very_light_green"
             android:textSize="20sp"
             android:textStyle="bold|italic" />
 
-        <ImageButton
-            android:id="@+id/photoButton"
-            style="@style/Widget.AppCompat.ImageButton"
+        <ImageView
+            android:id="@+id/photoView"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:scaleType="fitCenter"
             android:src="@drawable/avatar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/photoButton"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/light_green"
+                android:textColor="@color/black"
+                app:cornerRadius="50dp"
+                app:icon="@drawable/ic_photo_camera"
+                app:iconGravity="textTop"
+                app:iconPadding="-2dp"
+                app:iconTint="#0B0A0A"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/galleryButton"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="@color/light_green"
+                android:textColor="@color/black"
+                app:cornerRadius="50dp"
+                app:icon="@drawable/ic_image_search"
+                app:iconGravity="textTop"
+                app:iconPadding="-2dp"
+                app:iconTint="#0B0A0A"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/nextButton"
+        android:id="@+id/nextButton2"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
