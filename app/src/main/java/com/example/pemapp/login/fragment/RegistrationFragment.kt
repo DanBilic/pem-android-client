@@ -44,7 +44,7 @@ class RegistrationFragment : Fragment() {
 
         view.registerButton.setOnClickListener {
             val myWrite = UserData("", regiUsername.toString(), regiEmail.toString(),
-                regiPassword.toString(), "", "")
+                regiPassword.toString(), "", "", "","")
             userDataConnection.pushWrite(myWrite)
 //            Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 

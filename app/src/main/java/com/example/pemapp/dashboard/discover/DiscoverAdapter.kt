@@ -18,6 +18,7 @@ class DiscoverAdapter (private val dataSet: List<MicroTaskData>) :
         var taskTitle: TextView = view.findViewById(R.id.taskTitle)
         var taskDescription: TextView = view.findViewById(R.id.taskDescription)
         var taskCategory: TextView = view.findViewById(R.id.category)
+        var type:TextView = view.findViewById(R.id.type)
         var taskPicture: ImageView = view.findViewById(R.id.typepicture)
 
     }
@@ -38,6 +39,7 @@ class DiscoverAdapter (private val dataSet: List<MicroTaskData>) :
         holder.taskCategory.text = microtasks.Category
         println(microtasks.Type)
         if (microtasks.Type == "Event") {
+            holder.type.text = "Event"
             holder.taskPicture.setImageResource(R.drawable.event)
         }
 
