@@ -10,6 +10,8 @@ data class UserData (
     val email: String,
     val password: String,
     val profilepicture: String,
+    val location: String,
+    val hobby: String,
     val status: String
 )
 
