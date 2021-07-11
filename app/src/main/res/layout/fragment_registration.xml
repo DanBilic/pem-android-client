@@ -94,9 +94,10 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordTextField">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/regi2_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
