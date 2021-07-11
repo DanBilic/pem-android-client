@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pemapp.R
 import com.example.pemapp.dashboard.moments.model.MomentsAdapter
-import com.example.pemapp.dashboard.moments.network.MomentsConnectionFactory
-import com.example.pemapp.dashboard.moments.network.MomentsDataConnection
-import com.example.pemapp.dashboard.moments.network.MomentsNetworkCall
+import com.example.pemapp.dashboard.moments.network.*
 import kotlinx.android.synthetic.main.fragment_moments.view.*
 
 class MomentsFragment : Fragment() {

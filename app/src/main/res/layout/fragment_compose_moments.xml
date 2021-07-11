@@ -29,10 +29,12 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_margin="8dp"
+        android:layout_marginStart="30dp"
         android:backgroundTint="@color/light_green"
         android:text="@string/add_picture"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appComposeBar"
         tools:ignore="MissingConstraints" />
 
@@ -52,18 +54,21 @@
         android:id="@+id/inputMoments"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
         android:autofillHints="Your input..."
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addPictureButton"
-        tools:ignore="LabelFor,MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:ignore="LabelFor,MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:layout_margin="20dp"
         android:contentDescription="@string/todo"
         app:layout_constraintTop_toBottomOf="@id/inputMoments"
         app:srcCompat="@drawable/avatar"
