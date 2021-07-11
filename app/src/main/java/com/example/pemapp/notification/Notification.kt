@@ -1,5 +1,6 @@
 package com.example.pemapp.notification
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -10,6 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.pemapp.R
 import com.example.pemapp.dashboard.DashboardActivity
+import java.util.*
 
 
 class Notification(private val context: Context) {
@@ -56,6 +58,31 @@ class Notification(private val context: Context) {
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager!!.createNotificationChannel(channel)
         }
+    }
+
+    fun setAlarm() {
+        // Quote in Morning at 08:32:00 AM
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 15)
+        calendar.set(Calendar.MINUTE, 19)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        val cur: Calendar = Calendar.getInstance()
+        if (cur.after(calendar)) {
+            calendar.add(Calendar.DATE, 1)
+        }
+        val myIntent = Intent(context, DailyReceiver::class.java)
+        val ALARM1_ID = 10000
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, ALARM1_ID, myIntent, PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.getTimeInMillis(),
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
     }
 
     init {

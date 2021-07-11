@@ -43,9 +43,9 @@ class RegistrationFragment : Fragment() {
 
 
         view.registerButton.setOnClickListener {
-            val myWrite = UserData("", regiUsername.toString(), regiEmail.toString(),
-                regiPassword.toString(), "", "")
-            userDataConnection.pushWrite(myWrite)
+//            val myWrite = UserData("", regiUsername.toString(), regiEmail.toString(),
+//                regiPassword.toString(), "", "")
+//            userDataConnection.pushWrite(myWrite)
 //            Snackbar.make(it,"successfully registered", Snackbar.LENGTH_LONG).show()
 
             findNavController().navigate(R.id.action_registrationFragment_to_onboarding_nav)

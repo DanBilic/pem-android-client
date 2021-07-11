@@ -16,6 +16,7 @@ import com.example.pemapp.dashboard.DashboardActivity
 import com.example.pemapp.login.network.LoginConnectionFactory
 import com.example.pemapp.login.network.LoginDataConnection
 import com.example.pemapp.login.network.LoginNetworkCall
+import com.example.pemapp.notification.Notification
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 class LoginFragment : Fragment() {
@@ -40,27 +41,30 @@ class LoginFragment : Fragment() {
         loginDataConnection = ViewModelProvider(this, loginConnectionFactory).get(
             LoginDataConnection::class.java)
 
+        val noti = Notification(requireContext())
+        noti.setAlarm()
         view.enterRegistrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 
         view.loginButton.setOnClickListener {
-           loginDataConnection.authRead(loginEmail.toString(), loginPassword.toString())
-           loginDataConnection.authResponse.observe(viewLifecycleOwner, { response ->
+//           loginDataConnection.authRead(loginEmail.toString(), loginPassword.toString())
+//           loginDataConnection.authResponse.observe(viewLifecycleOwner, { response ->
 
-               if (response.status == "success") {
+
+//               if (response.status == "success") {
                     val intent = Intent(getActivity(), DashboardActivity::class.java)
 
-                    intent.putExtra("Username",response.name)
-                    intent.putExtra("Email", loginEmail.toString())
-                    intent.putExtra("Profilepicture", response.profilepicture)
+//                    intent.putExtra("Username",response.name)
+//                    intent.putExtra("Email", loginEmail.toString())
+//                    intent.putExtra("Profilepicture", response.profilepicture)
 
                     startActivity(intent)
-               } else
-               {
+//               } else
+//               {
                    Snackbar.make(it,"Wrong password",Snackbar.LENGTH_LONG).show()
-               }
-           })
+//               }
+//           })
 
         }
         return view
