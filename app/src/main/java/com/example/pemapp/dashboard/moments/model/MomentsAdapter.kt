@@ -16,10 +16,10 @@ class MomentsAdapter(private val dataSet: List<MomentsData>) :
     RecyclerView.Adapter<MomentsAdapter.MyViewHolder>() {
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var username: TextView = view.findViewById(R.id.usernameView)
-        var text: TextView = view.findViewById(R.id.descriptionTextView)
+        var username: TextView = view.findViewById(R.id.taskTitle)
+        var text: TextView = view.findViewById(R.id.taskDescription)
         var posttime: TextView = view.findViewById(R.id.posttimeView)
-        var pictureView: ImageView = view.findViewById(R.id.picture)
+        var pictureView: ImageView = view.findViewById(R.id.picture1)
         var profilepicture: ImageView = view.findViewById(R.id.profilepicture)
     }
 
