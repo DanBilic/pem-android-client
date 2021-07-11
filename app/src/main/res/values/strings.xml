@@ -55,4 +55,5 @@
     <string name="post">post</string>
     <string name="add_picture">add picture</string>
     <string name="todo">TODO</string>
+    <string name="event">Micro Task</string>
 </resources>

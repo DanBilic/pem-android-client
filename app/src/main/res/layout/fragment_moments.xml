@@ -38,6 +38,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="10dp"
                 android:backgroundTint="@color/light_green"
                 android:text="@string/compose"
                 android:textColor="@color/black"

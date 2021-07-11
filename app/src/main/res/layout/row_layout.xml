@@ -54,7 +54,7 @@
     </FrameLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/taskIndicator"
+        android:id="@+id/task"
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -71,6 +71,29 @@
             android:layout_gravity="center"
             android:text="@string/social_event"
             android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/typeview"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="280dp"
+        app:cardBackgroundColor="@color/light_blue"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/event"
+            android:textSize="12sp" />
 
     </androidx.cardview.widget.CardView>
 

@@ -64,7 +64,7 @@ class ProfileFragment : Fragment() {
         }
         view.profilepicture.setOnClickListener {
             selectImageInAlbum()
-            saveToDatabase()
+
 
         }
 
@@ -117,6 +117,7 @@ class ProfileFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE) {
             val imageUri = data?.data
             imageView.setImageURI(imageUri)
+            saveToDatabase()
 
         }
     }
