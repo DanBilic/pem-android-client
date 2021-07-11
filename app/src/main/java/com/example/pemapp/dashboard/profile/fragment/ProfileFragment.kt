@@ -65,7 +65,6 @@ class ProfileFragment : Fragment() {
         view.profilepicture.setOnClickListener {
             selectImageInAlbum()
 
-
         }
 
         return view
@@ -126,11 +125,10 @@ class ProfileFragment : Fragment() {
         val encode = Encode(imageView)
 
         val myWrite = UserData("", "", "",
-            "", encode.createImageStringFromBitmap(), "")
+            "", encode.createImageStringFromBitmap(), "", "", "")
 
         userDataConnection.modiUser(email.text.toString(), myWrite)
 
-        //Snackbar.make(,"successful", Snackbar.LENGTH_LONG).show()
     }
 
 }

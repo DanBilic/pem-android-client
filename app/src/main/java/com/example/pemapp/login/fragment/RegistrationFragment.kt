@@ -7,10 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
+import com.example.pemapp.dashboard.profile.model.ProfileViewModel
+import com.example.pemapp.onboarding.OnbordingItem
+import com.example.pemapp.onboarding.fragment.Onboarding1Fragment
 import com.example.pemapp.user.network.UserConnectionFactory
 import com.example.pemapp.user.model.UserData
 import com.example.pemapp.user.network.UserDataConnection
@@ -51,6 +56,8 @@ class RegistrationFragment : Fragment() {
         val regiPassword2Field = view.findViewById<TextInputLayout>(R.id.password2TextField)
         val regiUsernameField = view.findViewById<TextInputLayout>(R.id.usernameInputField)
 
+
+
         view.registerButton.setOnClickListener {
             if (TextUtils.isEmpty(regiEmail)) {
                 regiEmailField.setError(" Please Enter Your E-Mail");
@@ -61,9 +68,17 @@ class RegistrationFragment : Fragment() {
             } else if (TextUtils.isEmpty(regiUsername)) {
                 regiUsernameField.setError("Please Enter Your User Name")
             } else {
+                /*val bundle = Bundle()
+                bundle.putString("email", regiEmail.toString())
+                val onboarding1Fragment = Onboarding1Fragment()
+                onboarding1Fragment.setArguments (bundle)
+                println(onboarding1Fragment)*/
+                    val onbordingItem = OnbordingItem()
+                onbordingItem.setEmail(regiEmail.toString())
+                println(onbordingItem.getEmail())
                 val myWrite = UserData(
                     "", regiUsername.toString(), regiEmail.toString(),
-                    regiPassword.toString(), "", ""
+                    regiPassword.toString(), "", "", "",""
                 )
                 userDataConnection.pushWrite(myWrite)
                 Snackbar.make(it, "successfully registered", Snackbar.LENGTH_LONG).show()
