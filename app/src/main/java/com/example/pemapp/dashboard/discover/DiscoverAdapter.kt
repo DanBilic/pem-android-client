@@ -20,9 +20,7 @@ class DiscoverAdapter (private val dataSet: List<MicroTaskData>) :
         var taskCategory: TextView = view.findViewById(R.id.category)
         var type:TextView = view.findViewById(R.id.type)
         var taskPicture: ImageView = view.findViewById(R.id.typepicture)
-
     }
-
 
     @NonNull
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -37,18 +35,10 @@ class DiscoverAdapter (private val dataSet: List<MicroTaskData>) :
         holder.taskTitle.text = microtasks.Title
         holder.taskDescription.text = microtasks.Description
         holder.taskCategory.text = microtasks.Category
-        println(microtasks.Type)
         if (microtasks.Type == "Event") {
             holder.type.text = "Event"
             holder.taskPicture.setImageResource(R.drawable.event)
         }
-
-       /* if (user.picture != "") {
-            holder.pictureView.setImageBitmap(decode(user.picture))
-        }
-        if (user.profilepicture != "") {
-            holder.profilepicture.setImageBitmap(decode(user.profilepicture))
-        }*/
     }
 
     override fun getItemCount(): Int {
