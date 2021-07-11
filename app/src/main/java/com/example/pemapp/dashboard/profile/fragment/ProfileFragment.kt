@@ -24,6 +24,7 @@ import com.example.pemapp.user.network.UserConnectionFactory
 import com.example.pemapp.user.network.UserNetworkCall
 import com.example.pemapp.controller.util.Decode
 import com.example.pemapp.controller.util.Encode
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment() {
@@ -35,6 +36,7 @@ class ProfileFragment : Fragment() {
     private val RECORD_REQUEST_CODE = 101
     val PICK_IMAGE = 1
     var notificationId = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,11 +58,14 @@ class ProfileFragment : Fragment() {
         email = view.findViewById(R.id.emailTextView)
         setupPermissions()
 
+        username.setOnClickListener{
+            val notification = Notification(requireContext())
+            notification.showNotification(notificationId)
+        }
         view.profilepicture.setOnClickListener {
-           var notification = Notification(requireContext())
-           notification.showNotification(notificationId)
             selectImageInAlbum()
             saveToDatabase()
+
         }
 
         return view
@@ -124,6 +129,7 @@ class ProfileFragment : Fragment() {
 
         userDataConnection.modiUser(email.text.toString(), myWrite)
 
+        //Snackbar.make(,"successful", Snackbar.LENGTH_LONG).show()
     }
 
 }

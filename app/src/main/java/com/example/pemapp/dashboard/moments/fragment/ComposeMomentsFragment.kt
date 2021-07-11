@@ -19,12 +19,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.dashboard.moments.network.MomentsConnectionFactory
 import com.example.pemapp.dashboard.moments.model.MomentsData
-import com.example.pemapp.dashboard.moments.network.MomentsDataConnection
-import com.example.pemapp.dashboard.moments.network.MomentsNetworkCall
 import com.example.pemapp.dashboard.profile.model.ProfileViewModel
 import com.example.pemapp.controller.util.Encode
+import com.example.pemapp.dashboard.moments.network.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_compose_moments.view.*
 import java.time.LocalDateTime
@@ -64,7 +62,6 @@ class ComposeMomentsFragment : Fragment() {
         }
 
         view.addPictureButton.setOnClickListener {
-
             selectImageInAlbum()
         }
 
