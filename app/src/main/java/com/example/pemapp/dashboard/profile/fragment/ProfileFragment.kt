@@ -59,8 +59,6 @@ class ProfileFragment : Fragment() {
         setupPermissions()
 
         username.setOnClickListener{
-            val notification = Notification(requireContext())
-            notification.showNotification(notificationId)
         }
         view.profilepicture.setOnClickListener {
             selectImageInAlbum()

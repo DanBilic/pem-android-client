@@ -143,26 +143,28 @@ class DashboardActivity : AppCompatActivity() {
 
 
     fun setAlarm() {
+        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, Notification::class.java)
+        var pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP, setAlarmTime(8, 0).timeInMillis,
+            AlarmManager.INTERVAL_DAY, pendingIntent
+        )
+
+    }
+
+    fun setAlarmTime(hour: Int, minute: Int) : Calendar{
         val calendar: Calendar = Calendar.getInstance()
-        /*calendar.set(Calendar.HOUR_OF_DAY, 3)
-        calendar.set(Calendar.MINUTE, 19)
+        calendar.set(Calendar.HOUR_OF_DAY, hour)
+        calendar.set(Calendar.MINUTE, minute)
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
         val cur: Calendar = Calendar.getInstance()
         if (cur.after(calendar)) {
             calendar.add(Calendar.DATE, 1)
-        }*/
-
-        calendar.set(Calendar.MINUTE, Calendar.MINUTE+1)
-
-        alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, Notification::class.java)
-        var pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY, pendingIntent
-        )
-
+        }
+        // calendar.set(Calendar.MINUTE, Calendar.MINUTE+1)
+        return calendar
     }
 
     fun createNotificationChannel() {

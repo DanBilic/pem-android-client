@@ -1,6 +1,7 @@
 package com.example.pemapp.login.fragment
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,8 @@ class RegistrationFragment : Fragment() {
 
         val userNetworkCall = UserNetworkCall()
         val userConnectionFactory = UserConnectionFactory(userNetworkCall)
-        userDataConnection = ViewModelProvider(this, userConnectionFactory).get(UserDataConnection::class.java)
+        userDataConnection =
+            ViewModelProvider(this, userConnectionFactory).get(UserDataConnection::class.java)
 
 
         val regiEmail = view.findViewById<EditText>(R.id.regi_email).text
@@ -71,12 +73,12 @@ class RegistrationFragment : Fragment() {
                 val onboarding1Fragment = Onboarding1Fragment()
                 onboarding1Fragment.setArguments (bundle)
                 println(onboarding1Fragment)*/
-                    val onbordingItem = OnbordingItem()
+                val onbordingItem = OnbordingItem()
                 onbordingItem.setEmail(regiEmail.toString())
                 println(onbordingItem.getEmail())
                 val myWrite = UserData(
                     "", regiUsername.toString(), regiEmail.toString(),
-                    regiPassword.toString(), "", "", "",""
+                    regiPassword.toString(), "", "", "", ""
                 )
                 userDataConnection.pushWrite(myWrite)
                 Snackbar.make(it, "successfully registered", Snackbar.LENGTH_LONG).show()
