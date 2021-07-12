@@ -19,7 +19,6 @@ import com.example.pemapp.login.network.LoginDataConnection
 import com.example.pemapp.login.network.LoginNetworkCall
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.example.pemapp.notification.Notification
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 class LoginFragment : Fragment() {
@@ -47,10 +46,14 @@ class LoginFragment : Fragment() {
             LoginDataConnection::class.java
         )
 
-        val noti = Notification(requireContext())
-        noti.setAlarm()
         view.enterRegistrationButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+            if (TextUtils.isEmpty(loginEmail)) {
+                loginField.setError(" Please Enter Your E-Mail");
+            } else if (TextUtils.isEmpty(loginPassword)) {
+                passwordField.setError(" Please Enter Your Password");
+            } else {
+                findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+            }
         }
 
         view.loginButton.setOnClickListener {
@@ -62,11 +65,11 @@ class LoginFragment : Fragment() {
                 loginDataConnection.authRead(loginEmail.toString(), loginPassword.toString())
                 loginDataConnection.authResponse.observe(viewLifecycleOwner, { response ->
                     if (response.status == "success") {
-                val intent = Intent(getActivity(), DashboardActivity::class.java)
+                        val intent = Intent(getActivity(), DashboardActivity::class.java)
                         intent.putExtra("Username", response.name)
                         intent.putExtra("Email", loginEmail.toString())
                         intent.putExtra("Profilepicture", response.profilepicture)
-                startActivity(intent)
+                        startActivity(intent)
                     } else {
                         Snackbar.make(it, "Wrong password", Snackbar.LENGTH_LONG).show()
                     }
