@@ -1,14 +1,10 @@
 package com.example.pemapp.dashboard.appUsage.model
 
-data class AppUsageData (
+data class AppUsageData(
+    val packageName: String,
     val appName: String,
+    val picture: Int,
+    val countUsage: Int,
     val lastTimeUsed: String,
-    val firstTimeStamp: String,
-    val lastTimeStamp: String,
-    val totalTimeInForeground: String,
-    val lastTimeVisible: String,
-    val totalTimeVisible: String,
-    val lastTimeForegroundServiceUsed: String,
-    val totalTimeForegroundServiceUsed: String
-
+    val totalTimeVisible: String
 )

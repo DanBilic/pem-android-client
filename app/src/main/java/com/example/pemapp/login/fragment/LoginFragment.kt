@@ -47,13 +47,6 @@ class LoginFragment : Fragment() {
         )
 
         view.enterRegistrationButton.setOnClickListener {
-           /* if (TextUtils.isEmpty(loginEmail)) {
-                loginField.setError(" Please Enter Your E-Mail");
-            } else if (TextUtils.isEmpty(loginPassword)) {
-                passwordField.setError(" Please Enter Your Password");
-            } else {
-
-            }*/
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
 

@@ -73,12 +73,12 @@ class RegistrationFragment : Fragment() {
                 val onboarding1Fragment = Onboarding1Fragment()
                 onboarding1Fragment.setArguments (bundle)
                 println(onboarding1Fragment)*/
-                    val onbordingItem = OnbordingItem()
+                val onbordingItem = OnbordingItem()
                 onbordingItem.setEmail(regiEmail.toString())
                 println(onbordingItem.getEmail())
                 val myWrite = UserData(
                     "", regiUsername.toString(), regiEmail.toString(),
-                    regiPassword.toString(), "", "", "",""
+                    regiPassword.toString(), "", "", "", ""
                 )
                 userDataConnection.pushWrite(myWrite)
                 Snackbar.make(it, "successfully registered", Snackbar.LENGTH_LONG).show()
