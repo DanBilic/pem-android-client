@@ -13,8 +13,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.AppOpsManagerCompat.MODE_ALLOWED
 import com.example.pemapp.R
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -25,6 +23,7 @@ class AppUsageModel {
         private lateinit var context: Context
         val appUsageList: MutableList<AppUsageData> = mutableListOf()
         val appUsageSelected: MutableList<AppUsageData> = mutableListOf()
+
 
         fun setContext(con: Context) {
             context = con
@@ -61,10 +60,11 @@ class AppUsageModel {
                 if (queryUsageStats[i].lastTimeUsed != 0L && currentTime(queryUsageStats[i].lastTimeUsed)) {
                     for (apps in SocialApps.socialAppsList) {
                         if (queryUsageStats[i].packageName.contains(apps)) {
+                            var newAppName = setAppName(queryUsageStats[i].packageName, apps)
                             var appUsageD = AppUsageData(
                                 queryUsageStats[i].packageName,
-                                setAppName(queryUsageStats[i].packageName, apps),
-                                getPictureApp(apps),
+                                newAppName,
+                                getPictureApp(newAppName),
                                 0,
                                 convertDateTime(queryUsageStats[i].lastTimeUsed),
                                 convertTime(queryUsageStats[i].totalTimeVisible)
@@ -74,22 +74,44 @@ class AppUsageModel {
                     }
                 }
             }
+
         }
     }
 
     fun groupList(){
         var sortedAppUsageList = appUsageList.groupBy { it.appName }
+        val containApps: MutableList<String> = mutableListOf()
         for (sortedApp in sortedAppUsageList.values) {
-            appUsageSelected.add(
-                AppUsageData(
-                    sortedApp[sortedApp.lastIndex].packageName,
-                    sortedApp[sortedApp.lastIndex].appName,
-                    sortedApp[sortedApp.lastIndex].picture,
-                    sortedApp.size,
-                    sortedApp[sortedApp.lastIndex].lastTimeUsed,
-                    sortedApp[sortedApp.lastIndex].totalTimeVisible
+            if(appUsageSelected.size>0) {
+                for (nameAvailable in containApps) {
+                    if (nameAvailable != sortedApp[sortedApp.lastIndex].appName) {
+                        appUsageSelected.add(
+                            AppUsageData(
+                                sortedApp[sortedApp.lastIndex].packageName,
+                                sortedApp[sortedApp.lastIndex].appName,
+                                sortedApp[sortedApp.lastIndex].picture,
+                                sortedApp.size,
+                                sortedApp[sortedApp.lastIndex].lastTimeUsed,
+                                sortedApp[sortedApp.lastIndex].totalTimeVisible
+                            )
+                        )
+                    }
+                }
+            } else {
+                containApps.add(sortedApp[sortedApp.lastIndex].appName)
+                appUsageSelected.add(
+                    AppUsageData(
+                        sortedApp[sortedApp.lastIndex].packageName,
+                        sortedApp[sortedApp.lastIndex].appName,
+                        sortedApp[sortedApp.lastIndex].picture,
+                        sortedApp.size,
+                        sortedApp[sortedApp.lastIndex].lastTimeUsed,
+                        sortedApp[sortedApp.lastIndex].totalTimeVisible
+                    )
                 )
-            )
+            }
+
+
         }
 
         /*for (element in appUsageSelected) {
@@ -131,8 +153,8 @@ class AppUsageModel {
             picture = R.drawable.telegram_icon
         } else if (appName.equals("twitter")) {
             picture = R.drawable.twitter_icon
-        } else if (appName.equals("facebook messanger")) {
-            picture = R.drawable.messanger_icon
+        } else if (appName.contains("messenger")) {
+            picture = R.drawable.messenger_icon
         }
         return picture
 
