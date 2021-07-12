@@ -15,7 +15,7 @@ class LoginDataConnection(private val loginNetworkCall: LoginNetworkCall): ViewM
                 authResponse.value  = loginNetworkCall.authRead(email, password)
             } catch (e: retrofit2.HttpException) {
                 authResponse.value = UserData("", "", "", "", "", "",
-                    "","wrong password")
+                    listOf(),"wrong password")
                 println(e)
             }
         }

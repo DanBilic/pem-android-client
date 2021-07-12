@@ -125,7 +125,7 @@ class ProfileFragment : Fragment() {
         val encode = Encode(imageView)
 
         val myWrite = UserData("", "", "",
-            "", encode.createImageStringFromBitmap(), "", "", "")
+            "", encode.createImageStringFromBitmap(), "", listOf(), "")
 
         userDataConnection.modiUser(email.text.toString(), myWrite)
 

@@ -14,17 +14,27 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
+import com.example.pemapp.controller.util.Encode
+import com.example.pemapp.onboarding.OnboardingViewModel
+import com.example.pemapp.user.model.UserData
+import com.example.pemapp.user.network.UserConnectionFactory
+import com.example.pemapp.user.network.UserDataConnection
+import com.example.pemapp.user.network.UserNetworkCall
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_onboarding2.view.*
 import kotlinx.android.synthetic.main.fragment_onboarding2.view.nextButton2
 
 class Onboarding2Fragment : Fragment() {
+    private lateinit var userDataConnection: UserDataConnection
+    private lateinit var onboardingViewModel: OnboardingViewModel
     private val REQUEST_CODE = 42
     private val RECORD_REQUEST_CODE = 101
     val PICK_IMAGE = 1
     private lateinit var imageView: ImageView
+    private lateinit var email: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +44,20 @@ class Onboarding2Fragment : Fragment() {
         imageView = view.findViewById(R.id.photoView)
 
         setupPermissions()
+        val userNetworkCall = UserNetworkCall()
+        val userConnectionFactory = UserConnectionFactory(userNetworkCall)
+        userDataConnection = ViewModelProvider(this, userConnectionFactory).get(UserDataConnection::class.java)
+
+
+        onboardingViewModel = ViewModelProvider(requireActivity()).get(OnboardingViewModel::class.java)
+        onboardingViewModel.getEmail().observe(viewLifecycleOwner, {
+            email = it
+        })
 
         view.nextButton2.setOnClickListener {
+            saveToDatabase()
+
             findNavController().navigate(R.id.action_onboarding2Fragment_to_onboarding3Fragment)
-            //Todo: save picture in Object
         }
 
         view.photoButton.setOnClickListener {
@@ -92,4 +112,17 @@ class Onboarding2Fragment : Fragment() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+    private fun saveToDatabase() {
+        val encode = Encode(imageView)
+        val encodedPicture = encode.createImageStringFromBitmap()
+
+        val myWrite = UserData("", "", "",
+            "", encodedPicture, "", listOf(), "")
+
+        userDataConnection.modiUser(email, myWrite)
+        onboardingViewModel.setProfilepicture(encodedPicture)
+
+    }
+
 }

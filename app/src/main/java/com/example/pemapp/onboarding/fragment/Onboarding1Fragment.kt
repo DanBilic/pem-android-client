@@ -10,7 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.pemapp.R
-import com.example.pemapp.onboarding.OnbordingItem
+import com.example.pemapp.dashboard.profile.model.ProfileViewModel
+import com.example.pemapp.onboarding.OnboardingViewModel
 import com.example.pemapp.user.model.UserData
 import com.example.pemapp.user.network.UserConnectionFactory
 import com.example.pemapp.user.network.UserDataConnection
@@ -21,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_onboarding1.view.*
 class Onboarding1Fragment : Fragment() {
 
     private lateinit var userDataConnection: UserDataConnection
+    private lateinit var email: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,31 +37,22 @@ class Onboarding1Fragment : Fragment() {
         userDataConnection = ViewModelProvider(this, userConnectionFactory).get(UserDataConnection::class.java)
 
 
+        val onboardingViewModel = ViewModelProvider(requireActivity()).get(OnboardingViewModel::class.java)
+        onboardingViewModel.getEmail().observe(viewLifecycleOwner, {
+            email = it
+        })
+
         view.nextButton1.setOnClickListener {
             if (TextUtils.isEmpty(location.text)) {
                 locationLayout.setError(" Please Enter Your Location");
             } else {
-                //val bundle = arguments
-               // val bundle = getArguments()
+               val myWrite = UserData("", "", "",
+                    "", "", location.text.toString(), listOf(), "")
 
-                val myWrite = UserData("", "", "",
-                    "", "", location.text.toString(), "", "")
+                userDataConnection.modiUser(email, myWrite)
 
-
-               /* val onbordingItem = OnbordingItem()
-                println(onbordingItem.getEmail())
-                userDataConnection.modiUser(onbordingItem.getEmail(), myWrite)
-*/
-               /* if (bundle != null) {
-                    println(bundle.getString("email")!!)
-                }
-
-                if (bundle != null) {
-
-                }*/
                 findNavController().navigate(R.id.action_onboarding1Fragment_to_onboarding2Fragment)
             }
-
         }
         return view
     }

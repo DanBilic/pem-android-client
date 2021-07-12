@@ -11,7 +11,7 @@ data class UserData (
     val password: String,
     val profilepicture: String,
     val location: String,
-    val hobby: String,
+    val hobby: List<String>,
     val status: String
 )
 

@@ -26,7 +26,6 @@ class DiscoverAdapter (private val dataSet: List<MicroTaskData>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_layout, parent, false)
-        println(dataSet)
         return MyViewHolder(view)
     }
 
